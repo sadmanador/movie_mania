@@ -1,10 +1,9 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
-
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 
 interface BannerMovieContextType {
-  movies: any[]; 
-  searchResult: any[]; 
-  sliderData: any[]; 
+  movies: any[];
+  searchResult: any[];
+  sliderData: any[];
   loading: boolean;
   error: Error | null;
   page: number;
@@ -24,7 +23,8 @@ const defaultContextValue: BannerMovieContextType = {
   setQuery: () => {},
 };
 
-export const BannerMovieContext = createContext<BannerMovieContextType>(defaultContextValue);
+export const BannerMovieContext =
+  createContext<BannerMovieContextType>(defaultContextValue);
 
 interface BannerContextProps {
   children: ReactNode;
@@ -37,12 +37,14 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
-  const [query, setQuery] = useState<string>('a');
+  const [query, setQuery] = useState<string>("a");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=c7cf1258a5aa723e8a98f08f639e86b6&page=${page}`);
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/now_playing?api_key=c7cf1258a5aa723e8a98f08f639e86b6&page=${page}`
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -57,13 +59,18 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     };
 
     fetchData();
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 800,
+      behavior: "smooth",
+    });
   }, [page]);
- 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=c7cf1258a5aa723e8a98f08f639e86b6`);
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/now_playing?api_key=c7cf1258a5aa723e8a98f08f639e86b6`
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -83,7 +90,9 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=c7cf1258a5aa723e8a98f08f639e86b6&query=${query}`);
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=c7cf1258a5aa723e8a98f08f639e86b6&query=${query}`
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -108,7 +117,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     setPage,
     page,
     searchResult,
-    setQuery
+    setQuery,
   };
 
   return (

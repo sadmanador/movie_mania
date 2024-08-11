@@ -35,7 +35,7 @@ const Pagination = () => {
             <li>
               <a
                 onClick={() => {
-                  setPage(page + 1);
+                  setPage(page - 1);
                 }}
                 aria-current="page"
                 className="cursor-pointer z-10 inline-flex items-center border border-gray-500 px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
