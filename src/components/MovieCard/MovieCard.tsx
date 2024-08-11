@@ -1,4 +1,5 @@
 import { Movie } from "@/types/MovieTypes";
+import Image from "next/image";
 
   
   const MovieCard = ({ movie }: { movie: Movie }) => {
@@ -7,7 +8,7 @@ import { Movie } from "@/types/MovieTypes";
     return (
       <div className="card bg-base-100 w-auto shadow-xl cursor-pointer">
         <figure>
-        <img src={imageUrl} alt={movie.title} />
+        <Image width={300} height={300} src={imageUrl} alt={movie.title} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">

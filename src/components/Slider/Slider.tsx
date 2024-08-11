@@ -1,14 +1,24 @@
 import { BannerMovieContext } from "@/context/BannerContext";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SingleSlide from "../SingleSlide/SingleSlide";
 
 const Slider = () => {
-  const { movies, loading, error } = useContext(BannerMovieContext);
+  const { sliderData } = useContext(BannerMovieContext);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % sliderData.length);
+    }, 3000); // Change slide every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on component unmount
+  }, [sliderData.length]);
+
 
   return (
     <div className="my-10">
       <div className="carousel carousel-end rounded-box">
-        {movies.map((movie, index) => {
+        {sliderData.map((movie, index) => {
           return <SingleSlide key={index} movie={movie} />;
         })}
       </div>

@@ -1,6 +1,9 @@
-import React from "react";
+import { BannerMovieContext } from "@/context/BannerContext";
+import React, { useContext } from "react";
 
 const Pagination = () => {
+  const { setPage, page } = useContext(BannerMovieContext);
+
   return (
     <div className="my-10">
       <div className="flex justify-center">
@@ -8,8 +11,10 @@ const Pagination = () => {
           <ul className="inline-flex items-center -space-x-px rounded-md text-sm shadow-sm">
             <li>
               <a
-                href="#"
-                className="inline-flex items-center space-x-2 rounded-l-md border border-gray-500  px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
+                onClick={() => {
+                  setPage((prev) => (prev > 1 ? prev - 1 : prev)); // Adjusted logic
+                }}
+                className="cursor-pointer inline-flex items-center space-x-2 rounded-l-md border border-gray-500  px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
               >
                 <svg
                   className="h-5 w-5"
@@ -29,35 +34,37 @@ const Pagination = () => {
             </li>
             <li>
               <a
-                href="#"
+                onClick={() => {
+                  setPage(page + 1);
+                }}
                 aria-current="page"
-                className="z-10 inline-flex items-center border border-gray-500 px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
+                className="cursor-pointer z-10 inline-flex items-center border border-gray-500 px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
               >
-                1{" "}
+                {page - 1}
+              </a>
+            </li>
+            <li>
+              <a className="cursor-pointer inline-flex items-center border border-gray-500  px-4 py-2 text-gray-500 hover:bg-gray-200 disabled">
+                {page}
               </a>
             </li>
             <li>
               <a
-                href="#"
-                className="inline-flex items-center border border-gray-500  px-4 py-2 text-gray-500 hover:bg-gray-200"
+                onClick={() => {
+                  setPage(page + 1);
+                }}
+                className="cursor-pointer inline-flex items-center border border-gray-500  px-4 py-2 text-gray-500 hover:bg-gray-200"
               >
-                2{" "}
+                {page + 1}
               </a>
             </li>
+
             <li>
               <a
-                href="#"
-                className="inline-flex items-center border border-gray-500  px-4 py-2 text-gray-500 hover:bg-gray-200"
-              >
-                3{" "}
-              </a>
-            </li>
-            
-           
-            <li>
-              <a
-                href="#"
-                className="inline-flex items-center space-x-2 rounded-r-md border border-gray-500  px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
+                onClick={() => {
+                  setPage((prev) => (prev < 100 ? prev + 1 : prev));
+                }}
+                className="cursor-pointer inline-flex items-center space-x-2 rounded-r-md border border-gray-500  px-4 py-2 font-medium text-gray-500 hover:bg-gray-200"
               >
                 <span>Next</span>
                 <svg

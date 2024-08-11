@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 
 const Banner = () => {
-
   const [currentItem, setCurrentItem] = useState(1);
   const [progress, setProgress] = useState(0);
   const [countdown, setCountdown] = useState(5);
