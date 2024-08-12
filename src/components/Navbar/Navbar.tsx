@@ -29,7 +29,7 @@ const Navbar = () => {
               <div>
                 <input
                   type="text"
-                  className="rounded-md placeholder:bg-black placeholder:text-zinc-600 placeholder:text-md lg:p-2 p-1 bg-black border-none"
+                  className="rounded-md placeholder:text-zinc-600 placeholder:text-md lg:p-2 p-1 border-none"
                   placeholder="Search"
                 />
               </div>
@@ -39,12 +39,12 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">Movie Mania</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="px-1">
           <li>
-            <div>
+            <div className="border-neutral-950 border">
               <input
                 type="text"
-                className="input lg:w-96 rounded-md placeholder:bg-black placeholder:text-zinc-600 placeholder:text-md lg:p-2 p-1 bg-black border-none"
+                className="input lg:w-96 rounded-md  placeholder:text-zinc-600 placeholder:text-md lg:p-2 p-1  border-none"
                 placeholder="Search"
               />
             </div>

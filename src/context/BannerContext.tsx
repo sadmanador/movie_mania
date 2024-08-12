@@ -37,8 +37,9 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
-  const [query, setQuery] = useState<string>("a");
+  const [query, setQuery] = useState<string>("");
 
+  // page wise movie
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -65,6 +66,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     });
   }, [page]);
 
+  // static movie data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -87,6 +89,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     fetchData();
   }, []);
 
+  //movie data for search box
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -97,7 +100,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setSliderData(data.results);
+        setSearchResult(data.results);
       } catch (error) {
         setError(error as Error);
         console.error("Fetch error:", error);
@@ -107,7 +110,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     };
 
     fetchData();
-  }, []);
+  }, [query]);
 
   const contextValue = {
     movies,

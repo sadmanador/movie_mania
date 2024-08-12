@@ -1,7 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { BannerMovieContext } from "@/context/BannerContext";
+import { useContext, useEffect, useState } from "react";
+import SingleBanner from "../SingleBanner/SingleBanner";
 
 const Banner = () => {
+  const { movies} = useContext(BannerMovieContext);
+
   const [currentItem, setCurrentItem] = useState(1);
   const [progress, setProgress] = useState(0);
   const [countdown, setCountdown] = useState(5);
@@ -34,7 +38,14 @@ const Banner = () => {
     <div className="relative w-full">
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
       <div className="carousel  w-full">
-        <div
+
+      {movies.map((movie, index) => {
+      return <SingleBanner key={index} movie={movie} currentItem={currentItem}/>
+    }
+    )}
+
+
+        {/* <div
           id="item1"
           className={`carousel-item w-full ${
             currentItem === 1 ? "block" : "hidden"
@@ -77,7 +88,7 @@ const Banner = () => {
             src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
             className="w-full"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* buttons for the slider */}

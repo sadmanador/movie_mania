@@ -11,7 +11,7 @@ export default function Home() {
     <BannerContext>
       <div className="relative">
         <Navbar />
-        <Banner />
+        <Banner/>
         <Slider />
         <CardGroup />
         <Pagination />
