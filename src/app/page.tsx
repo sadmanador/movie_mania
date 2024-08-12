@@ -1,6 +1,7 @@
 "use client"
 import Banner from "@/components/Banner/Banner";
 import CardGroup from "@/components/CardGroup/CardGroup";
+import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import Pagination from "@/components/Pagination/Pagination";
 import Slider from "@/components/Slider/Slider";
@@ -15,6 +16,7 @@ export default function Home() {
         <Slider />
         <CardGroup />
         <Pagination />
+        <Footer/>
       </div>
     </BannerContext>
   );

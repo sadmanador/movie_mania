@@ -4,20 +4,17 @@ import { useContext, useEffect, useState } from "react";
 import SingleBanner from "../SingleBanner/SingleBanner";
 
 const Banner = () => {
-  const { movies} = useContext(BannerMovieContext);
+  const { movies } = useContext(BannerMovieContext);
 
   const [currentItem, setCurrentItem] = useState(1);
   const [progress, setProgress] = useState(0);
   const [countdown, setCountdown] = useState(5);
 
-
-
-
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress(0);
       setCountdown(5);
-      setCurrentItem((prevItem) => (prevItem === 4 ? 1 : prevItem + 1));
+      setCurrentItem((prevItem) => (prevItem === 6 ? 1 : prevItem + 1));
       console.log("Image switched to item:", currentItem);
     }, 5000); // Switch image every 5 seconds
 
@@ -38,57 +35,16 @@ const Banner = () => {
     <div className="relative w-full">
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
       <div className="carousel  w-full">
-
-      {movies.map((movie, index) => {
-      return <SingleBanner key={index} movie={movie} currentItem={currentItem}/>
-    }
-    )}
-
-
-        {/* <div
-          id="item1"
-          className={`carousel-item w-full ${
-            currentItem === 1 ? "block" : "hidden"
-          }`}
-        >
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-            className="w-full"
-          />
-        </div>
-        <div
-          id="item2"
-          className={`carousel-item w-full ${
-            currentItem === 2 ? "block" : "hidden"
-          }`}
-        >
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-            className="w-full"
-          />
-        </div>
-        <div
-          id="item3"
-          className={`carousel-item w-full ${
-            currentItem === 3 ? "block" : "hidden"
-          }`}
-        >
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-            className="w-full"
-          />
-        </div>
-        <div
-          id="item4"
-          className={`carousel-item w-full ${
-            currentItem === 4 ? "block" : "hidden"
-          }`}
-        >
-          <img
-            src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-            className="w-full"
-          />
-        </div> */}
+        {movies.map((movie, index) => {
+          return (
+            <SingleBanner
+              key={movie.id}
+              movie={movie}
+              currentItem={currentItem}
+              itemIndex={index + 1}
+            />
+          );
+        })}
       </div>
 
       {/* buttons for the slider */}
@@ -116,6 +72,18 @@ const Banner = () => {
           className={`btn btn-xs ${currentItem === 4 ? "btn-active" : ""}`}
         >
           4
+        </button>
+        <button
+          onClick={() => setCurrentItem(5)}
+          className={`btn btn-xs ${currentItem === 5 ? "btn-active" : ""}`}
+        >
+          5
+        </button>
+        <button
+          onClick={() => setCurrentItem(6)}
+          className={`btn btn-xs ${currentItem === 6 ? "btn-active" : ""}`}
+        >
+          6
         </button>
       </div>
 
