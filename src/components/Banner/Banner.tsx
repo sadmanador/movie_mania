@@ -30,7 +30,7 @@ const Banner = () => {
   }, [currentItem]);
 
   return (
-    <div className="relative w-full hidden lg:block">
+    <div className="relative w-full">
       <div className="carousel  w-full">
         {movies.map((movie, index) => {
           return (

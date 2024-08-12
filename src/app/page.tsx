@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Banner from "@/components/Banner/Banner";
 import CardGroup from "@/components/CardGroup/CardGroup";
 import Footer from "@/components/Footer/Footer";
@@ -12,11 +12,11 @@ export default function Home() {
     <BannerContext>
       <div className="relative">
         <Navbar />
-        <Banner/>
+        <Banner />
         <Slider />
         <CardGroup />
         <Pagination />
-        <Footer/>
+        <Footer />
       </div>
     </BannerContext>
   );

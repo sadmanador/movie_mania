@@ -7,7 +7,7 @@ import Link from "next/link";
     const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
     return (
-      <Link href={`/${movie.id}`} className="card bg-base-100 w-auto shadow-xl cursor-pointer">
+      <Link href={`/${movie.id}`} className="card bg-base-300 w-auto shadow-xl cursor-pointer hover:scale-[1.04] transition-transform duration-200 ease-in">
         <figure>
         <Image width={300} height={300} src={imageUrl} alt={movie.title} />
         </figure>

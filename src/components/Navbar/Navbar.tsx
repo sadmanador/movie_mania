@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ThemeToggleButton from "../DarkMode/DarkMode";
 
 const Navbar = () => {
@@ -36,15 +37,15 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Movie Mania</a>
+        <Link href={'/'} className="btn btn-ghost text-xl">Movie Mania</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="px-1">
           <li>
-            <div className="border-neutral-950 border">
+            <div className="border-neutral-950 border bottom-4 rounded-lg">
               <input
                 type="text"
-                className="input lg:w-96 rounded-md  placeholder:text-zinc-600 placeholder:text-md lg:p-2 p-1  border-none"
+                className="input lg:w-96 rounded-md  placeholder:text-zinc-400 placeholder:text-md lg:p-2 p-1  border-none"
                 placeholder="Search"
               />
             </div>

@@ -3,16 +3,19 @@ import { useContext } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 
 const CardGroup = () => {
-  const { movies} = useContext(BannerMovieContext);
+  const { movies } = useContext(BannerMovieContext);
 
   return (
-    <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4 lg:mx-14 mx-4">
-
-    {movies.map((movie, index) => {
-      return <MovieCard key={index} movie={movie}/>
-    }
-    )}
-    </div>
+    <>
+      <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
+        Top Rated Movies
+      </h2>
+      <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4 lg:mx-14 mx-4">
+        {movies.map((movie, index) => {
+          return <MovieCard key={index} movie={movie} />;
+        })}
+      </div>
+    </>
   );
 };
 
