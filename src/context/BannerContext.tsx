@@ -7,11 +7,12 @@ interface BannerMovieContextType {
   loading: boolean;
   error: Error | null;
   page: number;
+  singleMovie: {};
   setPage: (page: number | ((prev: number) => number)) => void;
-  setQuery: (page: string | ((prev: string) => string)) => void;
+  setQuery: (query: string | ((prev: string) => string)) => void;
+  setSingleMovie: (singleMovie: {} | ((prev: {}) => {})) => void;
 }
 
-// Provide a default context value
 const defaultContextValue: BannerMovieContextType = {
   movies: [],
   searchResult: [],
@@ -19,8 +20,10 @@ const defaultContextValue: BannerMovieContextType = {
   loading: true,
   error: null,
   page: 1,
+  singleMovie: [],
   setPage: () => {},
   setQuery: () => {},
+  setSingleMovie: () => {},
 };
 
 export const BannerMovieContext =
@@ -30,7 +33,11 @@ interface BannerContextProps {
   children: ReactNode;
 }
 
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
 const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
+  const [singleMovie, setSingleMovie] = useState<{}>({});
   const [movies, setMovies] = useState<any[]>([]);
   const [searchResult, setSearchResult] = useState<any[]>([]);
   const [sliderData, setSliderData] = useState<any[]>([]);
@@ -39,12 +46,12 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
 
-  // page wise movie
+  // page-wise movie
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/now_playing?api_key=c7cf1258a5aa723e8a98f08f639e86b6&page=${page}`
+          `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -71,7 +78,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/now_playing?api_key=c7cf1258a5aa723e8a98f08f639e86b6`
+          `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -89,12 +96,12 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     fetchData();
   }, []);
 
-  //movie data for search box
+  // movie data for search box
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/search/movie?api_key=c7cf1258a5aa723e8a98f08f639e86b6&query=${query}`
+          `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -121,6 +128,8 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     page,
     searchResult,
     setQuery,
+    singleMovie,
+    setSingleMovie,
   };
 
   return (

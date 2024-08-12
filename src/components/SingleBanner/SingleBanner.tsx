@@ -25,23 +25,31 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
         currentItem === itemIndex ? "block" : "hidden"
       }`}
     >
-      <img className="object-center lg:max-h-[65vh] max-h-screen w-full object-cover" src={backDropImg} alt={movie.title}/>
+      <img
+        className="object-center lg:max-h-[65vh] max-h-screen w-full object-cover"
+        src={backDropImg}
+        alt={movie.title}
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
       <div className="absolute bottom-10 left-10 flex lg:gap-16 sm:gap-8 gap-4 ">
         <div>
-          <Image className="w-24 lg:w-64" width={250} height={200} src={imageUrl} alt={movie.title} />
+          <Image
+            className="w-24 lg:w-64"
+            width={250}
+            height={200}
+            src={imageUrl}
+            alt={movie.title}
+          />
         </div>
         <div className="self-end">
           <h2 className="lg:text-5xl md:text-4x sm:text-3xl text-2x text-white">
-          {movie.title}
+            {movie.title}
           </h2>
           <p className="lg:mt-4 text-stone-400 text-wrap min-w-40 hidden lg:block">
-          {movie.overview}
+            {movie.overview}
           </p>
           <p className="mt-4 text-stone-400">Vote: {movie.vote_count}</p>
-          <p className="mt-4 text-stone-400">
-          Rating: {movie.vote_average}
-          </p>
+          <p className="mt-4 text-stone-400">Rating: {movie.vote_average}</p>
         </div>
       </div>
     </div>
