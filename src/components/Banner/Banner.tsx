@@ -15,7 +15,6 @@ const Banner = () => {
       setProgress(0);
       setCountdown(5);
       setCurrentItem((prevItem) => (prevItem === 6 ? 1 : prevItem + 1));
-      console.log("Image switched to item:", currentItem);
     }, 5000); // Switch image every 5 seconds
 
     const progressInterval = setInterval(() => {
@@ -27,13 +26,11 @@ const Banner = () => {
     return () => {
       clearInterval(interval);
       clearInterval(progressInterval);
-      console.log("Intervals cleared");
     };
   }, [currentItem]);
 
   return (
-    <div className="relative w-full">
-      <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+    <div className="relative w-full hidden lg:block">
       <div className="carousel  w-full">
         {movies.map((movie, index) => {
           return (
@@ -91,7 +88,7 @@ const Banner = () => {
       <div className="absolute top-6 right-4">
         <svg className="w-12 h-12">
           <circle
-            className="text-gray-500"
+            className="text-[#5a5a5a]"
             strokeWidth="4"
             stroke="currentColor"
             fill="transparent"
@@ -100,7 +97,7 @@ const Banner = () => {
             cy="24"
           />
           <circle
-            className="text-base-100"
+            className="text-[white]"
             strokeWidth="4"
             strokeDasharray="113"
             strokeDashoffset={113 - (113 * progress) / 100}
@@ -115,7 +112,7 @@ const Banner = () => {
             x="24"
             y="28"
             textAnchor="middle"
-            className="text-sm font-bold fill-current text-base-100"
+            className="text-sm font-bold fill-current text-[white]"
           >
             {Math.ceil(countdown)}
           </text>
