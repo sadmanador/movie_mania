@@ -1,5 +1,4 @@
 "use client";
-import CardGroup from "@/components/CardGroup/CardGroup";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,14 +9,18 @@ const SingleMoviePage = () => {
   const pathWithoutSlash = pathname?.replace(/^\/+/, "");
   const numericMovieId = Number(pathWithoutSlash);
 
-  const imageUrl = movie ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "";
-  const backDropImg = movie ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : "";
+  const imageUrl = movie
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : "";
+  const backDropImg = movie
+    ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+    : "";
 
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/movie/${numericMovieId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
+          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
         );
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -32,8 +35,9 @@ const SingleMoviePage = () => {
     fetchMovieData();
   }, [numericMovieId]);
 
-
-  const genreNames = movie?.genres.map((genre: { name: string }) => genre.name).join(', ');
+  const genreNames = movie?.genres
+    .map((genre: { name: string }) => genre.name)
+    .join(", ");
 
   return (
     <div>
@@ -63,8 +67,12 @@ const SingleMoviePage = () => {
                 {movie.overview}
               </p>
               <p className="mt-4 text-stone-400">Vote: {movie.vote_count}</p>
-              <p className="mt-4 text-stone-400">Rating: {movie.vote_average}</p>
-              <p className="mt-4 text-stone-400">Genres: {genreNames}</p>
+              <p className="mt-4 text-stone-400">
+                Rating: {movie.vote_average}
+              </p>
+              <p className="mt-4 text-stone-400">
+                Genres: <div className="badge badge-outline rounded-lg">{genreNames}</div>{" "}
+              </p>
             </div>
           </div>
         </div>

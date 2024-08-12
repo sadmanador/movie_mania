@@ -33,8 +33,8 @@ interface BannerContextProps {
   children: ReactNode;
 }
 
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const API_KEY = "c7cf1258a5aa723e8a98f08f639e86b6";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [singleMovie, setSingleMovie] = useState<{}>({});
