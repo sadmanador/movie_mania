@@ -1,7 +1,10 @@
+"use client"
 import Link from "next/link";
 import ThemeToggleButton from "../DarkMode/DarkMode";
 
 const Navbar = () => {
+
+
   return (
     <div className="navbar bg-base-100 sticky top-0 z-20">
       <div className="navbar-start">
@@ -37,7 +40,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link href={'/'} className="btn btn-ghost text-xl">Movie Mania</Link>
+        <Link href={"/"} className="btn btn-ghost text-xl">
+          Movie Mania
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="px-1">
@@ -53,7 +58,26 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <ThemeToggleButton />
+        <ul className=" px-1 flex items-center gap-4">
+          <li>
+            <Link className="hover:text-yellow-500" href={"/"}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="hover:text-yellow-500" href={"/explore"}>
+              Explore
+            </Link>
+          </li>
+          <li>
+            <Link className="hover:text-yellow-500" href={"/tv_shows"}>
+              TV Shows
+            </Link>
+          </li>
+          <li>
+            <ThemeToggleButton />
+          </li>
+        </ul>
       </div>
     </div>
   );

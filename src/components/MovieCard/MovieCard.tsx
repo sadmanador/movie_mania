@@ -18,7 +18,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <p>{movie.overview.slice(0, 40)}...<span className="underline italic">more</span></p>
         <div className="card-actions justify-start">
           <div className="badge badge-outline">Release Date:  <span className="text-[12px] italic ml-2">{movie.release_date}</span></div>
-          
         </div>
       </div>
     </Link>

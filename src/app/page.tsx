@@ -10,7 +10,10 @@ export default function Home() {
       <div className="relative">
         <Banner />
         <Slider />
-        <CardGroup />
+        <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
+          Top Rated Movies
+        </h2>
+        <CardGroup streamingType={"home"} />
       </div>
     </BannerContext>
   );

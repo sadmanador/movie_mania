@@ -10,6 +10,10 @@ interface BannerMovieContextType {
   singleMovie: {};
   setPage: (page: number | ((prev: number) => number)) => void;
   setQuery: (query: string | ((prev: string) => string)) => void;
+  setMovieOrTv: (movieOrTv: string | ((prev: string) => string)) => void;
+  setTrendingOptions: (
+    trendingOptions: string | ((prev: string) => string)
+  ) => void;
   setSingleMovie: (singleMovie: {} | ((prev: {}) => {})) => void;
 }
 
@@ -24,6 +28,8 @@ const defaultContextValue: BannerMovieContextType = {
   setPage: () => {},
   setQuery: () => {},
   setSingleMovie: () => {},
+  setMovieOrTv: () => {},
+  setTrendingOptions: () => {},
 };
 
 export const BannerMovieContext =
@@ -45,13 +51,18 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
+  const [movieOrTv, setMovieOrTv] = useState<string>("movie");
+  const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
+
+  console.log(movieOrTv);
 
   // page-wise movie
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await fetch(
-          `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`
+          `${BASE_URL}/${movieOrTv}/${trendingOptions}?api_key=${API_KEY}&page=${page}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -71,7 +82,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
       top: 800,
       behavior: "smooth",
     });
-  }, [page]);
+  }, [page, movieOrTv, trendingOptions]);
 
   // static movie data
   useEffect(() => {
@@ -130,6 +141,8 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     setQuery,
     singleMovie,
     setSingleMovie,
+    setMovieOrTv,
+    setTrendingOptions,
   };
 
   return (
