@@ -71,11 +71,9 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>(""); // Added state for movie ID
 
-  console.log(trendingOptions);
+  console.log(query);
 
   useEffect(() => {
-    console.log("Fetching data with trendingOptions:", trendingOptions);
-    console.log(trendingOptions);
     const fetchData = async () => {
       setLoading(true);
       try {

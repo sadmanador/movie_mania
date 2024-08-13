@@ -1,10 +1,9 @@
-"use client"
+"use client";
 import Link from "next/link";
 import ThemeToggleButton from "../DarkMode/DarkMode";
+import SearchBox from "../SearchBox/SearchBox";
 
 const Navbar = () => {
-
-
   return (
     <div className="navbar bg-base-300 sticky top-0 z-20">
       <div className="navbar-start">
@@ -31,51 +30,69 @@ const Navbar = () => {
           >
             <li className="mx-auto">
               <div>
-                <input
-                  type="text"
-                  className="rounded-md placeholder:text-zinc-600 placeholder:text-md lg:p-2 p-1 border-none"
-                  placeholder="Search"
-                />
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                >
+                  <li>
+                    <Link className="hover:text-yellow-500 text-sm" href={"/"}>
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 text-sm"
+                      href={"/explore"}
+                    >
+                      Explore
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="hover:text-yellow-500 text-sm"
+                      href={"/tv_shows"}
+                    >
+                      TV Shows
+                    </Link>
+                  </li>
+                  <li>
+                    <ThemeToggleButton />
+                  </li>
+                </ul>
               </div>
             </li>
           </ul>
         </div>
-        <Link href={"/"} className="btn btn-ghost text-xl">
+        <Link href={"/"} className="lg:btn btn-ghost lg:text-xl">
           Movie Mania
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="px-1">
+        <ul className=" px-1 flex items-center lg:gap-4 gap-1">
           <li>
-            <div className="border-neutral-950 border bottom-4 rounded-lg">
-              <input
-                type="text"
-                className="input lg:w-96 rounded-md  placeholder:text-zinc-400 placeholder:text-md lg:p-2 p-1  border-none"
-                placeholder="Search"
-              />
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <ul className=" px-1 flex items-center gap-4">
-          <li>
-            <Link className="hover:text-yellow-500" href={"/"}>
+            <Link className="hover:text-yellow-500 text-sm" href={"/"}>
               Home
             </Link>
           </li>
           <li>
-            <Link className="hover:text-yellow-500" href={"/explore"}>
+            <Link className="hover:text-yellow-500 text-sm" href={"/explore"}>
               Explore
             </Link>
           </li>
           <li>
-            <Link className="hover:text-yellow-500" href={"/tv_shows"}>
+            <Link className="hover:text-yellow-500 text-sm" href={"/tv_shows"}>
               TV Shows
             </Link>
           </li>
           <li>
             <ThemeToggleButton />
+          </li>
+        </ul>
+      </div>
+      <div className="navbar-end">
+        <ul className="px-1">
+          <li className="relative">
+            <SearchBox />
           </li>
         </ul>
       </div>
