@@ -25,8 +25,10 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
         currentItem === itemIndex ? "block" : "hidden"
       }`}
     >
-      <img
-        className="object-center lg:max-h-[65vh] max-h-screen w-full object-cover"
+      <Image
+      width={1600}
+      height={800}
+        className="object-top lg:max-h-[65vh] max-h-screen w-full object-cover"
         src={backDropImg}
         alt={movie.title}
       />
