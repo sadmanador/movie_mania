@@ -113,7 +113,7 @@ const SingleMoviePage = () => {
                 <VideoPlayer key={index} video={video} />
               ))
             ) : (
-              <p>No videos available</p>
+              <p>No trailer videos available</p>
             )}
           </div>
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
