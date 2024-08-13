@@ -1,10 +1,10 @@
 "use client";
-import { useContext, useState } from "react";
 import CardGroup from "@/components/CardGroup/CardGroup";
-import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
+import BannerContext from "@/context/BannerContext";
+import { useState } from "react";
 
 const Page = () => {
-  const [activeTab, setActiveTab] = useState<string>("top_rated");
+  const [activeTab, setActiveTab] = useState<string>("popular");
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);

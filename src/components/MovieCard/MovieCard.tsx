@@ -1,13 +1,20 @@
+"use client";
+import { BannerMovieContext } from "@/context/BannerContext";
 import { Movie } from "@/types/MovieTypes";
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
+  const { detailsType } = useContext(BannerMovieContext);
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
+  // Determine the href based on detailsType
+  const href = detailsType === "tv" ? `/tv_shows/${movie.id}` : `/${movie.id}`;
 
   return (
     <Link
-      href={`/${movie.id}`}
+      href={href}
       className="card bg-base-300 w-auto shadow-xl cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
     >
       <figure>
@@ -15,9 +22,17 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{movie.title}</h2>
-        <p>{movie.overview.slice(0, 40)}...<span className="underline italic">more</span></p>
+        <p>
+          {movie.overview.slice(0, 40)}...
+          <span className="underline italic">more</span>
+        </p>
         <div className="card-actions justify-start">
-          <div className="badge badge-outline">Release Date:  <span className="text-[12px] italic ml-2">{movie.release_date}</span></div>
+          <div className="badge badge-outline">
+            Release Date:{" "}
+            <span className="text-[12px] italic ml-2">
+              {movie.release_date}
+            </span>
+          </div>
         </div>
       </div>
     </Link>

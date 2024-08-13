@@ -1,14 +1,15 @@
 "use client";
 import CardGroup from "@/components/CardGroup/CardGroup";
-import BannerContext from "@/context/BannerContext";
-import React, { useState } from "react";
+import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
+import React, { useContext, useState } from "react";
 
 const Page = () => {
-  const [activeTab, setActiveTab] = useState<string>("top_rated");
-
+  const { setDetailsType } = useContext(BannerMovieContext);
+  const [activeTab, setActiveTab] = useState<string>("popular");
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
+    setDetailsType("tv");
   };
 
   return (
@@ -62,10 +63,9 @@ const Page = () => {
           >
             Top Rated
           </a>
-         
         </div>
 
-        <CardGroup streamingType="tv" activeTab={activeTab}/>
+        <CardGroup streamingType="tv" activeTab={activeTab} />
       </BannerContext>
     </>
   );

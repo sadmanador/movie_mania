@@ -5,18 +5,17 @@ import Pagination from "../Pagination/Pagination";
 
 interface CardGroupProps {
   streamingType: string;
-  activeTab: string;
+  activeTab: string
 }
 
-const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
-  const { movies, setMovieOrTv, setTrendingOptions } =
-    useContext(BannerMovieContext);
+const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab}) => {
+  const { movies, setMovieOrTv, setTrendingOptions } = useContext(BannerMovieContext);
 
   useEffect(() => {
     console.log(`Setting movieOrTv to ${streamingType}`);
     setMovieOrTv(streamingType);
-    setTrendingOptions(activeTab);
-  }, [streamingType, setMovieOrTv, setTrendingOptions, activeTab]);
+    setTrendingOptions(activeTab)
+  }, [streamingType, setMovieOrTv]);
 
   return (
     <>
@@ -31,3 +30,4 @@ const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
 };
 
 export default CardGroup;
+

@@ -1,11 +1,12 @@
 "use client";
-import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
+import { BannerMovieContext } from "@/context/BannerContext";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const SingleMoviePage = () => {
+  const { detailsType } = useContext(BannerMovieContext);
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
   const pathname = usePathname();
@@ -23,7 +24,7 @@ const SingleMoviePage = () => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${"https://api.themoviedb.org/3"}/${detailsType}/${numericMovieId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
         );
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -35,9 +36,9 @@ const SingleMoviePage = () => {
       }
     };
     fetchMovieData();
-  }, [numericMovieId]);
+  }, [numericMovieId, detailsType]);
 
-  // Fetch YouTube data
+  //youtube data
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
@@ -55,6 +56,8 @@ const SingleMoviePage = () => {
     };
     fetchMovieData();
   }, [numericMovieId]);
+
+  console.log(youtubeData);
 
   const genreNames = movie?.genres
     .map((genre: { name: string }) => genre.name)
@@ -94,17 +97,13 @@ const SingleMoviePage = () => {
                 </p>
                 <p className="mt-4 text-stone-400">
                   Genres:{" "}
-                  <div className="">
-                    {<div className="badge badge-outline rounded-lg">{genreNames}</div>}
+                  <div className="badge badge-outline rounded-lg">
+                    {genreNames}
                   </div>{" "}
                 </p>
               </div>
             </div>
           </div>
-
-          <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
-            Movie Trailers
-          </h2>
           <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
             {youtubeData && youtubeData.length > 0 ? (
               youtubeData.map((video: any, index: number) => (
@@ -114,13 +113,6 @@ const SingleMoviePage = () => {
               <p>No videos available</p>
             )}
           </div>
-
-          {/* Render SimilarMovieGroup component */}
-
-          <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
-            Similar Movies
-          </h2>
-          <SimilarMovieGroup movieId={numericMovieId.toString()} />
         </>
       ) : (
         <p>Loading...</p>
