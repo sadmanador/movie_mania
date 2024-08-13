@@ -9,6 +9,7 @@ interface BannerMovieContextType {
   error: Error | null;
   page: number;
   detailsType: "movie" | "tv";
+  movieOrTv: "movie" | "tv";
   singleMovie: {};
   movieId: string;
   setPage: (page: number | ((prev: number) => number)) => void;
@@ -16,7 +17,7 @@ interface BannerMovieContextType {
   setDetailsType: (
     detailsType: "movie" | "tv" | ((prev: "movie" | "tv") => "movie" | "tv")
   ) => void;
-  setMovieOrTv: (movieOrTv: string | ((prev: string) => string)) => void;
+  setMovieOrTv: (movieOrTv: "movie" | "tv" | ((prev: "movie" | "tv") => "movie" | "tv")) => void;
   setTrendingOptions: (
     trendingOptions: string | ((prev: string) => string)
   ) => void;
@@ -33,6 +34,7 @@ const defaultContextValue: BannerMovieContextType = {
   error: null,
   page: 1,
   detailsType: "movie",
+  movieOrTv: "movie",
   singleMovie: {},
   movieId: "",
   setPage: () => {},
@@ -64,7 +66,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
-  const [movieOrTv, setMovieOrTv] = useState<string>("movie");
+  const [movieOrTv, setMovieOrTv] = useState<"movie" | "tv">("movie");
   const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>("");
@@ -184,6 +186,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     setDetailsType,
     movieId,
     setMovieId,
+    movieOrTv
   };
 
   return (

@@ -4,9 +4,10 @@ import Pagination from '../Pagination/Pagination';
 
 interface SimilarMovieGroupProps {
   movieId: string;
+  mediaType: "movie" | "tv"
 }
 
-const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({ movieId }) => {
+const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({ movieId,mediaType }) => {
   const [similarMovies, setSimilarMovies] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
@@ -17,7 +18,7 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({ movieId }) => {
         setLoading(true); // Start loading before fetching data
         try {
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=c7cf1258a5aa723e8a98f08f639e86b6`
+            `https://api.themoviedb.org/3/${mediaType}/${movieId}/similar?api_key=c7cf1258a5aa723e8a98f08f639e86b6`
           );
           if (!response.ok) {
             throw new Error("Network response was not ok");

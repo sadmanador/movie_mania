@@ -1,4 +1,5 @@
 "use client";
+import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
 import { BannerMovieContext } from "@/context/BannerContext";
 import Image from "next/image";
@@ -10,8 +11,8 @@ const SingleMoviePage = () => {
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
   const pathname = usePathname();
-  const pathWithoutSlash = pathname?.replace(/^\/+/, "");
-  const numericMovieId = Number(pathWithoutSlash);
+  const segments = pathname?.split("/") || [];
+  const numericMovieId = Number(segments[segments.length - 1]);
 
   const imageUrl = movie
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
@@ -24,7 +25,7 @@ const SingleMoviePage = () => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/${detailsType}/${numericMovieId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${"https://api.themoviedb.org/3"}/tv/${numericMovieId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
         );
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -37,6 +38,8 @@ const SingleMoviePage = () => {
     };
     fetchMovieData();
   }, [numericMovieId, detailsType]);
+
+  console.log(numericMovieId)
 
   //youtube data
   useEffect(() => {
@@ -113,9 +116,13 @@ const SingleMoviePage = () => {
               <p>No videos available</p>
             )}
           </div>
+          <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
+            Similar TV Shows
+          </h2>
+          <SimilarMovieGroup mediaType={"tv"} movieId={numericMovieId.toString()} />
         </>
       ) : (
-        <p>Loading...</p>
+        <p>Loading... the single tv show page</p>
       )}
     </div>
   );

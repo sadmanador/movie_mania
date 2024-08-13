@@ -120,7 +120,7 @@ const SingleMoviePage = () => {
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
             Similar Movies
           </h2>
-          <SimilarMovieGroup movieId={numericMovieId.toString()} />
+          <SimilarMovieGroup mediaType={"movie"} movieId={numericMovieId.toString()} />
         </>
       ) : (
         <p>Loading...</p>

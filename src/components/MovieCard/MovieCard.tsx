@@ -6,21 +6,21 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  const { detailsType } = useContext(BannerMovieContext);
+  const { detailsType,movieOrTv } = useContext(BannerMovieContext);
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   // Determine the href based on detailsType
-  const href = detailsType === "tv" ? `/tv_shows/${movie.id}` : `/${movie.id}`;
+  const href = movieOrTv === "tv" ? `/tv_shows/${movie.id}` : `/${movie.id}`;
 
   return (
     <Link
       href={href}
-      className="card bg-base-300 w-auto shadow-xl cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
+      className="card bg-slate-700 w-auto shadow-xl cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
     >
       <figure>
         <Image width={300} height={300} src={imageUrl} alt={movie.title} />
       </figure>
-      <div className="card-body">
+      <div className="card-body text-gray-300">
         <h2 className="card-title">{movie.title}</h2>
         <p>
           {movie.overview.slice(0, 40)}...

@@ -33,17 +33,6 @@ const MoviesPage = () => {
         <a
           role="tab"
           className={`tab hover:text-yellow-500 ${
-            activeTab === "upcoming"
-              ? "tab-active text-yellow-500 font-bold"
-              : ""
-          }`}
-          onClick={() => handleTabClick("upcoming")}
-        >
-          Up Coming
-        </a>
-        <a
-          role="tab"
-          className={`tab hover:text-yellow-500 ${
             activeTab === "top_rated"
               ? "tab-active text-yellow-500 font-bold"
               : ""
@@ -52,6 +41,18 @@ const MoviesPage = () => {
         >
           Top Rated
         </a>
+        <a
+          role="tab"
+          className={`tab hover:text-yellow-500 ${
+            activeTab === "upcoming"
+              ? "tab-active text-yellow-500 font-bold"
+              : ""
+          }`}
+          onClick={() => handleTabClick("upcoming")}
+        >
+          Up Coming
+        </a>
+        
       </div>
       <CardGroup streamingType="movie" activeTab={activeTab} />
     </BannerContext>

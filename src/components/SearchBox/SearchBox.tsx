@@ -38,14 +38,14 @@ const SearchBox = () => {
       <div className="border-neutral-950 border bottom-4 rounded-lg">
         <input
           type="text"
-          className="border-gray-400 border-4 lg:w-96 rounded-md placeholder:text-zinc-400 placeholder:text-md  p-1 border-none pl-4"
+          className="border-gray-400 border-4 max-w-[400px] sm:w-[450px] lg:w-[450px] rounded-md placeholder:text-zinc-400 placeholder:text-md  p-1 border-none pl-4"
           placeholder="Search"
           onChange={handleInputChange}
         />
       </div>
       {/* Conditionally render the results */}
       {response && (
-        <div className="p-2 lg:w-96 h-64 bg-base-200 absolute overflow-auto">
+        <div className="p-2 md:w-[600px] h-64 bg-base-200 absolute right-0 overflow-auto">
           {results.map((movie, index) => (
             <SearchResultCard key={index} movie={movie} />
           ))}

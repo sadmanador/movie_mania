@@ -36,28 +36,6 @@ const TVshowPage = () => {
           <a
             role="tab"
             className={`tab hover:text-yellow-500 ${
-              activeTab === "upcoming"
-                ? "tab-active text-yellow-500 font-bold"
-                : ""
-            }`}
-            onClick={() => handleTabClick("airing_today")}
-          >
-            Airing Today
-          </a>
-          <a
-            role="tab"
-            className={`tab hover:text-yellow-500 ${
-              activeTab === "upcoming"
-                ? "tab-active text-yellow-500 font-bold"
-                : ""
-            }`}
-            onClick={() => handleTabClick("on_the_air")}
-          >
-            On The Air
-          </a>
-          <a
-            role="tab"
-            className={`tab hover:text-yellow-500 ${
               activeTab === "top_rated"
                 ? "tab-active text-yellow-500 font-bold"
                 : ""
@@ -66,6 +44,18 @@ const TVshowPage = () => {
           >
             Top Rated
           </a>
+          <a
+            role="tab"
+            className={`tab hover:text-yellow-500 ${
+              activeTab === "on_the_air"
+                ? "tab-active text-yellow-500 font-bold"
+                : ""
+            }`}
+            onClick={() => handleTabClick("on_the_air")}
+          >
+            On The Air
+          </a>
+          
         </div>
 
         <CardGroup streamingType="tv" activeTab={activeTab} />
