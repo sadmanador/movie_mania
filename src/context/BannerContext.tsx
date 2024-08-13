@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, ReactNode } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 
 interface BannerMovieContextType {
   movies: any[];
@@ -59,7 +59,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [movies, setMovies] = useState<any[]>([]);
   const [searchResult, setSearchResult] = useState<any[]>([]);
   const [sliderData, setSliderData] = useState<any[]>([]);
-  const [similarMovies, setSimilarMovies] = useState<any[]>([]); // Added state for similar movies
+  const [similarMovies, setSimilarMovies] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
@@ -67,9 +67,8 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [movieOrTv, setMovieOrTv] = useState<string>("movie");
   const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
-  const [movieId, setMovieId] = useState<string>(""); // Added state for movie ID
+  const [movieId, setMovieId] = useState<string>("");
 
-console.log(movieOrTv)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,17 +95,9 @@ console.log(movieOrTv)
         setLoading(false);
       }
     };
-
     fetchData();
-    if (page !== 1) {
-      window.scrollTo({
-        top: 800,
-        behavior: "smooth",
-      });
-    }
   }, [page, movieOrTv, trendingOptions]);
 
-  // Fetch slider data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -129,7 +120,6 @@ console.log(movieOrTv)
     fetchData();
   }, []);
 
-  // Fetch search results
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -152,7 +142,6 @@ console.log(movieOrTv)
     fetchData();
   }, [query]);
 
-  // Fetch similar movies when movieId changes
   useEffect(() => {
     const fetchSimilarMovies = async () => {
       if (movieId) {
@@ -181,7 +170,7 @@ console.log(movieOrTv)
     movies,
     sliderData,
     searchResult,
-    similarMovies, // Added similar movies to context value
+    similarMovies,
     loading,
     error,
     setPage,
@@ -193,8 +182,8 @@ console.log(movieOrTv)
     setTrendingOptions,
     detailsType,
     setDetailsType,
-    movieId, // Added movie ID to context value
-    setMovieId, // Added setter for movie ID
+    movieId,
+    setMovieId,
   };
 
   return (

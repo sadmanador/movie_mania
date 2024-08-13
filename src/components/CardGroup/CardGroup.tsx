@@ -9,20 +9,21 @@ interface CardGroupProps {
 }
 
 const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
-  const { movies, setMovieOrTv, setTrendingOptions,movieOrTv } =
+  const { movies, setMovieOrTv, setTrendingOptions } =
     useContext(BannerMovieContext);
 
-    console.log(streamingType)
+  console.log(streamingType);
 
   useEffect(() => {
     console.log(`Setting movieOrTv to ${streamingType}`);
     setMovieOrTv(streamingType);
-  }, [streamingType, movieOrTv]);
-  
+  }, [streamingType, setMovieOrTv]);
+
   setTrendingOptions(activeTab);
 
   return (
     <>
+      <Pagination />
       <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 lg:mx-14 mx-4">
         {movies.map((movie, index) => (
           <MovieCard key={index} movie={movie} />
