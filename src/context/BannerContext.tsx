@@ -78,10 +78,12 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     };
 
     fetchData();
-    window.scrollTo({
-      top: 800,
-      behavior: "smooth",
-    });
+    if (page !== 1) {
+      window.scrollTo({
+        top: 800,
+        behavior: "smooth",
+      });
+    }
   }, [page, movieOrTv, trendingOptions]);
 
   // static movie data
