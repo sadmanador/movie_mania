@@ -4,12 +4,14 @@ import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
 import React, { useContext, useState } from "react";
 
 const Page = () => {
-  const { setDetailsType } = useContext(BannerMovieContext);
-  const [activeTab, setActiveTab] = useState<string>("popular");
+  const { setDetailsType, setTrendingOptions } = useContext(BannerMovieContext);
+  const [activeTab, setActiveTab] = useState<string>("top_rated");
+
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
     setDetailsType("tv");
+    setTrendingOptions(tab); 
   };
 
   return (

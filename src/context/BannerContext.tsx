@@ -13,9 +13,13 @@ interface BannerMovieContextType {
   movieId: string; // Added state for movie ID
   setPage: (page: number | ((prev: number) => number)) => void;
   setQuery: (query: string | ((prev: string) => string)) => void;
-  setDetailsType: (detailsType: "movie" | "tv" | ((prev: "movie" | "tv") => "movie" | "tv")) => void;
+  setDetailsType: (
+    detailsType: "movie" | "tv" | ((prev: "movie" | "tv") => "movie" | "tv")
+  ) => void;
   setMovieOrTv: (movieOrTv: string | ((prev: string) => string)) => void;
-  setTrendingOptions: (trendingOptions: string | ((prev: string) => string)) => void;
+  setTrendingOptions: (
+    trendingOptions: string | ((prev: string) => string)
+  ) => void;
   setSingleMovie: (singleMovie: {} | ((prev: {}) => {})) => void;
   setMovieId: (movieId: string | ((prev: string) => string)) => void; // Added setter for movie ID
 }
@@ -40,7 +44,8 @@ const defaultContextValue: BannerMovieContextType = {
   setMovieId: () => {}, // Added default function for movie ID setter
 };
 
-export const BannerMovieContext = createContext<BannerMovieContextType>(defaultContextValue);
+export const BannerMovieContext =
+  createContext<BannerMovieContextType>(defaultContextValue);
 
 interface BannerContextProps {
   children: ReactNode;
@@ -65,7 +70,9 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [movieId, setMovieId] = useState<string>(""); // Added state for movie ID
 
   // Fetch movies
+  // Inside BannerContext
   useEffect(() => {
+    console.log("Fetching data with trendingOptions:", trendingOptions);
     const fetchData = async () => {
       setLoading(true);
       try {

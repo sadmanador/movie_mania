@@ -1,16 +1,16 @@
 "use client";
 import CardGroup from "@/components/CardGroup/CardGroup";
-import BannerContext from "@/context/BannerContext";
-import { useState } from "react";
+import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
+import { useContext, useState } from "react";
 
-const Page = () => {
-  const [activeTab, setActiveTab] = useState<string>("popular");
+const MoviesPage = () => {
+  const { setTrendingOptions } = useContext(BannerMovieContext);
+  const [activeTab, setActiveTab] = useState<string>("top_rated");
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
+    setTrendingOptions(tab); // Update trending options based on the selected tab
   };
-
-  const streamingType = "movie";
 
   return (
     <BannerContext>
@@ -52,9 +52,9 @@ const Page = () => {
           Top Rated
         </a>
       </div>
-      <CardGroup streamingType={streamingType} activeTab={activeTab}/>
+      <CardGroup streamingType="movie" activeTab={activeTab} />
     </BannerContext>
   );
 };
 
-export default Page;
+export default MoviesPage;
