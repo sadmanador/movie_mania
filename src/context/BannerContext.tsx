@@ -1,7 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
-
-
 interface BannerMovieContextType {
   movies: any[];
   searchResult: any[];
@@ -71,7 +69,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>(""); // Added state for movie ID
 
-  console.log(query);
+console.log(movieOrTv)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,9 +79,15 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
           `${BASE_URL}/${movieOrTv}/${trendingOptions}?api_key=${API_KEY}&page=${page}`
         );
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          const errorText = await response.text();
+          console.error("Response Error:", errorText);
+          throw new Error(
+            `Network response was not ok: ${response.statusText}`
+          );
         }
+
         const data = await response.json();
+        console.log("Fetched Data:", data);
         setMovies(data.results);
       } catch (error) {
         setError(error as Error);

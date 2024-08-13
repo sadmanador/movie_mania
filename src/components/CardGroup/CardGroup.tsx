@@ -9,14 +9,16 @@ interface CardGroupProps {
 }
 
 const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
-  const { movies, setMovieOrTv, setTrendingOptions } =
+  const { movies, setMovieOrTv, setTrendingOptions,movieOrTv } =
     useContext(BannerMovieContext);
+
+    console.log(streamingType)
 
   useEffect(() => {
     console.log(`Setting movieOrTv to ${streamingType}`);
     setMovieOrTv(streamingType);
-  }, [streamingType, setMovieOrTv]);
-
+  }, [streamingType, movieOrTv]);
+  
   setTrendingOptions(activeTab);
 
   return (

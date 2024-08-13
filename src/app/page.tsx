@@ -15,7 +15,7 @@ export default function Home() {
         <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
           Top Rated Movies
         </h2>
-        <CardGroup streamingType={"home"} activeTab={'top_rated'}/>
+        <CardGroup streamingType={"movie"} activeTab={'top_rated'}/>
       </div>
     </BannerContext>
   );

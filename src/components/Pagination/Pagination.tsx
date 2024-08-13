@@ -4,6 +4,8 @@ import React, { useContext } from "react";
 const Pagination = () => {
   const { setPage, page } = useContext(BannerMovieContext);
 
+  console.log(page)
+
   return (
     <div className="my-10">
       <div className="flex justify-center">
