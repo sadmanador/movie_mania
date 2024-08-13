@@ -3,7 +3,7 @@ import CardGroup from "@/components/CardGroup/CardGroup";
 import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
 import React, { useContext, useState } from "react";
 
-const Page = () => {
+const TVshowPage = () => {
   const { setDetailsType, setTrendingOptions } = useContext(BannerMovieContext);
   const [activeTab, setActiveTab] = useState<string>("top_rated");
 
@@ -11,8 +11,9 @@ const Page = () => {
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
     setDetailsType("tv");
-    setTrendingOptions(tab); 
   };
+
+
 
   return (
     <>
@@ -73,4 +74,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default TVshowPage;

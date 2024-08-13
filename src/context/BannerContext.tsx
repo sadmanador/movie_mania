@@ -1,16 +1,18 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 
+
+
 interface BannerMovieContextType {
   movies: any[];
   searchResult: any[];
   sliderData: any[];
-  similarMovies: any[]; // Added state for similar movies
+  similarMovies: any[];
   loading: boolean;
   error: Error | null;
   page: number;
   detailsType: "movie" | "tv";
   singleMovie: {};
-  movieId: string; // Added state for movie ID
+  movieId: string;
   setPage: (page: number | ((prev: number) => number)) => void;
   setQuery: (query: string | ((prev: string) => string)) => void;
   setDetailsType: (
@@ -21,27 +23,27 @@ interface BannerMovieContextType {
     trendingOptions: string | ((prev: string) => string)
   ) => void;
   setSingleMovie: (singleMovie: {} | ((prev: {}) => {})) => void;
-  setMovieId: (movieId: string | ((prev: string) => string)) => void; // Added setter for movie ID
+  setMovieId: (movieId: string | ((prev: string) => string)) => void;
 }
 
 const defaultContextValue: BannerMovieContextType = {
   movies: [],
   searchResult: [],
   sliderData: [],
-  similarMovies: [], // Added default value for similar movies
+  similarMovies: [],
   loading: true,
   error: null,
   page: 1,
   detailsType: "movie",
   singleMovie: {},
-  movieId: "", // Added default value for movie ID
+  movieId: "",
   setPage: () => {},
   setQuery: () => {},
   setSingleMovie: () => {},
   setMovieOrTv: () => {},
   setTrendingOptions: () => {},
   setDetailsType: () => {},
-  setMovieId: () => {}, // Added default function for movie ID setter
+  setMovieId: () => {},
 };
 
 export const BannerMovieContext =
@@ -69,10 +71,11 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>(""); // Added state for movie ID
 
-  // Fetch movies
-  // Inside BannerContext
+  console.log(trendingOptions);
+
   useEffect(() => {
     console.log("Fetching data with trendingOptions:", trendingOptions);
+    console.log(trendingOptions);
     const fetchData = async () => {
       setLoading(true);
       try {

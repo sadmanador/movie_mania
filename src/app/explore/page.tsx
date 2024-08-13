@@ -9,7 +9,6 @@ const MoviesPage = () => {
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
-    setTrendingOptions(tab); // Update trending options based on the selected tab
   };
 
   return (
@@ -25,7 +24,9 @@ const MoviesPage = () => {
               ? "tab-active text-yellow-500 font-bold"
               : ""
           }`}
-          onClick={() => handleTabClick("popular")}
+          onClick={() => {
+            handleTabClick("popular");
+          }}
         >
           Popular
         </a>
