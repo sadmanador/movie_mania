@@ -17,7 +17,7 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
 }) => {
   // Construct the image URL using the movie's poster path
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  const backDropImg = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`;
 
   return (
     <div

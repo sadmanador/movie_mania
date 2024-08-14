@@ -20,7 +20,7 @@ const SingleMoviePage = () => {
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : "";
   const backDropImg = movie
-    ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+    ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
     : "";
 
   useEffect(() => {
@@ -279,7 +279,7 @@ const SingleMoviePage = () => {
               {selectedImage && (
                 <Image
                   className="w-full"
-                  src={`https://image.tmdb.org/t/p/original${selectedImage}`}
+                  src={`https://image.tmdb.org/t/p/w1280${selectedImage}`}
                   alt="Selected Scene"
                   width={800}
                   height={450}
