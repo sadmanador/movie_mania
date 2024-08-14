@@ -6,10 +6,12 @@ import SearchBox from "../SearchBox/SearchBox";
 const Navbar = () => {
   return (
     <>
-      <div className="sm:hidden navbar bg-base-300">
-        <a className="btn btn-ghost text-xl">Movie Mania</a>
+      <div className="sm:hidden navbar  bg-base-300 ">
+        <Link href={"/"} className="btn btn-ghost text-xl">
+          Movie Mania
+        </Link>
       </div>
-      <div className="navbar sticky top-0 z-40 glass md:px-10">
+      <div className="navbar sticky top-0 glass md:px-10 z-20">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

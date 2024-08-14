@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
-const SingleMoviePage = () => {
+const SingleTvShowPage = () => {
   const { detailsType } = useContext(BannerMovieContext);
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
@@ -128,4 +128,4 @@ const SingleMoviePage = () => {
   );
 };
 
-export default SingleMoviePage;
+export default SingleTvShowPage;

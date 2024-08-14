@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <BannerContext>
-      <div className="relative">
+      <div className="">
         <Banner />
         <Slider />
         <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
