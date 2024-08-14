@@ -268,17 +268,9 @@ const SingleMoviePage = () => {
             )}
           </div>
 
-          <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
-            Similar Movies
-          </h2>
-          <SimilarMovieGroup
-            mediaType={"movie"}
-            movieId={numericMovieId.toString()}
-          />
-
           {/* Modal for viewing larger scene images */}
           <dialog id="scene_modal" className="modal">
-            <div className="modal-box">
+            <div className="modal-box w-11/12 max-w-5xl">
               <form method="dialog">
                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
@@ -295,6 +287,16 @@ const SingleMoviePage = () => {
               )}
             </div>
           </dialog>
+
+          <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
+            Similar Movies
+          </h2>
+          <SimilarMovieGroup
+            mediaType={"movie"}
+            movieId={numericMovieId.toString()}
+          />
+
+          
         </>
       ) : (
         <p>Loading...</p>

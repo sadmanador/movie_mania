@@ -253,7 +253,7 @@ const SingleTvShowPage = () => {
 
 
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
-            Movie Scenes
+            TV Show Scenes
           </h2>
           <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
             {sceneImages && sceneImages.length > 0 ? (
@@ -276,6 +276,26 @@ const SingleTvShowPage = () => {
               <p>No scene images available</p>
             )}
           </div>
+
+          {/* Modal for viewing larger scene images */}
+          <dialog id="scene_modal" className="modal">
+            <div className="modal-box w-11/12 max-w-5xl">
+              <form method="dialog">
+                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              {selectedImage && (
+                <Image
+                  className="w-full"
+                  src={`https://image.tmdb.org/t/p/original${selectedImage}`}
+                  alt="Selected Scene"
+                  width={800}
+                  height={450}
+                />
+              )}
+            </div>
+          </dialog>
 
           {/* Similar TV show part */}
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
