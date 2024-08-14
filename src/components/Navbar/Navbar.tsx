@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="sm:hidden navbar bg-base-300">
         <a className="btn btn-ghost text-xl">Movie Mania</a>
       </div>
-      <div className="navbar bg-base-300 sticky top-0 z-20">
+      <div className="navbar sticky top-0 z-40 glass md:px-10">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -70,7 +70,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <Link href={"/"} className="lg:text-xl hidden sm:block">
+          <Link href={"/"} className="lg:text-xl hidden sm:block font-bold">
             Movie Mania
           </Link>
         </div>
