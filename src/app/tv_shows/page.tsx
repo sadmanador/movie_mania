@@ -1,24 +1,21 @@
 "use client";
 import CardGroup from "@/components/CardGroup/CardGroup";
-import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
-import React, { useContext, useState } from "react";
+import MainContext, {  MasterContext } from "@/context/MasterContext";
+import { useContext, useState } from "react";
 
 const TVshowPage = () => {
-  const { setDetailsType, setTrendingOptions } = useContext(BannerMovieContext);
+  const { setDetailsType, setTrendingOptions } = useContext(MasterContext);
   const [activeTab, setActiveTab] = useState<string>("top_rated");
-
 
   const handleTabClick = (tab: string) => {
     setActiveTab(tab);
     setDetailsType("tv");
   };
 
-
-
   return (
     <>
-      <BannerContext>
-        <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
+      <MainContext>
+        <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
           Explore TV Shows
         </h2>
         <div role="tablist" className="tabs tabs-lifted tabs-md my-10 text-xl">
@@ -55,11 +52,10 @@ const TVshowPage = () => {
           >
             On The Air
           </a>
-          
         </div>
 
         <CardGroup streamingType="tv" activeTab={activeTab} />
-      </BannerContext>
+      </MainContext>
     </>
   );
 };

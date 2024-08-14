@@ -5,7 +5,7 @@ export type VideoData = {
     key: string;
     name: string;
     official: boolean;
-    published_at: string; // Alternatively, you can use `Date` if you plan to parse it as a Date object
+    published_at: string;
     site: string;
     size: number;
     type: string;

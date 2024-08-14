@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
-import TVshowCard from "../TVCard/TVCard";
+import TVshowCard from "../TVshowCard/TVshowCard";
 
 interface SimilarMovieGroupProps {
   movieId: string;
@@ -15,11 +15,10 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-
   useEffect(() => {
     const fetchSimilarMovies = async () => {
       if (movieId) {
-        setLoading(true); 
+        setLoading(true);
         try {
           const response = await fetch(
             `https://api.themoviedb.org/3/${mediaType}/${movieId}/similar?api_key=c7cf1258a5aa723e8a98f08f639e86b6`
@@ -28,12 +27,12 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
             throw new Error("Network response was not ok");
           }
           const data = await response.json();
-          setSimilarMovies(data.results); 
+          setSimilarMovies(data.results);
         } catch (error) {
-          setError(error as Error); 
+          setError(error as Error);
           console.error("Fetch error:", error);
         } finally {
-          setLoading(false); 
+          setLoading(false);
         }
       }
     };
@@ -47,12 +46,13 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
   return (
     <>
       <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 lg:mx-14 mx-4">
-        {similarMovies.map((movie, index) => (
-          mediaType == "movie" ?
-          <MovieCard key={index} movie={movie} />
-          :
-          <TVshowCard key={index} movie={movie}/>
-        ))}
+        {similarMovies.map((movie, index) =>
+          mediaType == "movie" ? (
+            <MovieCard key={index} movie={movie} />
+          ) : (
+            <TVshowCard key={index} movie={movie} />
+          )
+        )}
       </div>
     </>
   );

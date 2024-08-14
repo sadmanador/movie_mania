@@ -1,9 +1,9 @@
-import { BannerMovieContext } from "@/context/BannerContext";
-import React, { useContext, useEffect, useState } from "react";
+import { MasterContext } from "@/context/MasterContext";
+import { useContext, useEffect, useState } from "react";
 import SingleSlide from "../SingleSlide/SingleSlide";
 
 const Slider = () => {
-  const { sliderData } = useContext(BannerMovieContext);
+  const { sliderData } = useContext(MasterContext);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
@@ -13,7 +13,6 @@ const Slider = () => {
 
     return () => clearInterval(interval); // Cleanup on component unmount
   }, [sliderData.length]);
-
 
   return (
     <div className="my-10">

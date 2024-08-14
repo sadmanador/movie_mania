@@ -1,5 +1,5 @@
 "use client";
-import { BannerMovieContext } from "@/context/BannerContext";
+import { MasterContext } from "@/context/MasterContext";
 import { Movie } from "@/types/MovieTypes";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  const { movieOrTv } = useContext(BannerMovieContext);
+  const { movieOrTv } = useContext(MasterContext);
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   const href = movieOrTv === "tv" ? `/tv_shows/${movie.id}` : `/${movie.id}`;
@@ -29,8 +29,16 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <div className="card-actions justify-start">
           <div>
             <p>
-              <Typography component="legend">Total votes: {movie.vote_count}</Typography>
-              <Rating name="read-only" readOnly value={movie.vote_average /2} precision={.5} max={5} />
+              <Typography component="legend">
+                Total votes: {movie.vote_count}
+              </Typography>
+              <Rating
+                name="read-only"
+                readOnly
+                value={movie.vote_average / 2}
+                precision={0.5}
+                max={5}
+              />
             </p>
           </div>
           <div className="badge badge-outline">

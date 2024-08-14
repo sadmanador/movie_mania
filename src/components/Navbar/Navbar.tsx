@@ -51,7 +51,7 @@ const Navbar = () => {
                     <li>
                       <Link
                         className="hover:text-yellow-500 text-sm"
-                        href={"/explore"}
+                        href={"/movies"}
                       >
                         Explore
                       </Link>
@@ -84,7 +84,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link className="hover:text-yellow-500 text-sm" href={"/explore"}>
+              <Link className="hover:text-yellow-500 text-sm" href={"/movies"}>
                 Explore
               </Link>
             </li>

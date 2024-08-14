@@ -1,8 +1,8 @@
-import { BannerMovieContext } from "@/context/BannerContext";
+import { MasterContext } from "@/context/MasterContext";
 import { useContext, useEffect } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import Pagination from "../Pagination/Pagination";
-import TVshowCard from "../TVCard/TVCard";
+import TVshowCard from "../TVshowCard/TVshowCard";
 
 interface CardGroupProps {
   streamingType: string;
@@ -11,7 +11,7 @@ interface CardGroupProps {
 
 const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
   const { movies, setMovieOrTv, setTrendingOptions } =
-    useContext(BannerMovieContext);
+    useContext(MasterContext);
 
   useEffect(() => {
     console.log(`Setting movieOrTv to ${streamingType}`);

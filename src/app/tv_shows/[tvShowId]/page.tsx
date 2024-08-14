@@ -1,14 +1,14 @@
 "use client";
 import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
-import { BannerMovieContext } from "@/context/BannerContext";
+import { MasterContext } from "@/context/MasterContext";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
 const SingleTvShowPage = () => {
-  const { detailsType } = useContext(BannerMovieContext);
+  const { detailsType } = useContext(MasterContext);
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
   const pathname = usePathname();
@@ -25,10 +25,9 @@ const SingleTvShowPage = () => {
     ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
     : "";
 
-
-    const featuredCrew = credits?.crew.filter((member: any) =>
-      ["Director", "Producer", "Screenplay", "Writer"].includes(member.job)
-    );
+  const featuredCrew = credits?.crew.filter((member: any) =>
+    ["Director", "Producer", "Screenplay", "Writer"].includes(member.job)
+  );
 
   //single details
   useEffect(() => {
@@ -48,7 +47,6 @@ const SingleTvShowPage = () => {
     };
     fetchMovieData();
   }, [numericTvShowId, detailsType]);
-
 
   //youtube data
   useEffect(() => {
@@ -106,20 +104,17 @@ const SingleTvShowPage = () => {
     fetchMovieImages();
   }, [numericTvShowId]);
 
-
-
   const genreNames = movie?.genres
     .map((genre: { name: string }) => genre.name)
     .join(", ");
 
-
-    const handleImageClick = (imagePath: string) => {
-      setSelectedImage(imagePath);
-      const modal = document.getElementById("scene_modal") as HTMLDialogElement;
-      if (modal) {
-        modal.showModal();
-      }
-    };
+  const handleImageClick = (imagePath: string) => {
+    setSelectedImage(imagePath);
+    const modal = document.getElementById("scene_modal") as HTMLDialogElement;
+    if (modal) {
+      modal.showModal();
+    }
+  };
   return (
     <div>
       {movie ? (
@@ -207,7 +202,7 @@ const SingleTvShowPage = () => {
             </div>
           </div>
 
-{/* Cast part */}
+          {/* Cast part */}
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             Cast
           </h2>
@@ -237,7 +232,7 @@ const SingleTvShowPage = () => {
             )}
           </div>
 
-{/* Youtube trailer part */}
+          {/* Youtube trailer part */}
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             Trailers
           </h2>
@@ -250,7 +245,6 @@ const SingleTvShowPage = () => {
               <p>No trailer videos available</p>
             )}
           </div>
-
 
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             TV Show Scenes

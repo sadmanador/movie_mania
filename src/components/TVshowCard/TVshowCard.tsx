@@ -3,7 +3,7 @@ import { TVShow } from "@/types/TvShowsTypes";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import "./TVCard.css"
+import "./TVshowCard.css"
 
 const TVshowCard = ({ movie }: { movie: TVShow }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;

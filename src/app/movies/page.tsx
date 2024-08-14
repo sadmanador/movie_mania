@@ -1,7 +1,7 @@
 "use client";
 import CardGroup from "@/components/CardGroup/CardGroup";
-import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
-import { useContext, useState } from "react";
+import MainContext from "@/context/MasterContext";
+import { useState } from "react";
 
 const MoviesPage = () => {
   const [activeTab, setActiveTab] = useState<string>("top_rated");
@@ -11,8 +11,8 @@ const MoviesPage = () => {
   };
 
   return (
-    <BannerContext>
-      <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
+    <MainContext>
+      <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
         Explore Movies
       </h2>
       <div role="tablist" className="tabs tabs-lifted tabs-md my-10 text-xl">
@@ -51,10 +51,9 @@ const MoviesPage = () => {
         >
           Up Coming
         </a>
-        
       </div>
       <CardGroup streamingType="movie" activeTab={activeTab} />
-    </BannerContext>
+    </MainContext>
   );
 };
 

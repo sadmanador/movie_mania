@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 
-interface BannerMovieContextType {
+interface MasterDataContext {
   movies: any[];
   searchResult: any[];
   sliderData: any[];
@@ -25,7 +25,7 @@ interface BannerMovieContextType {
   setMovieId: (movieId: string | ((prev: string) => string)) => void;
 }
 
-const defaultContextValue: BannerMovieContextType = {
+const defaultContextValue: MasterDataContext = {
   movies: [],
   searchResult: [],
   sliderData: [],
@@ -46,8 +46,8 @@ const defaultContextValue: BannerMovieContextType = {
   setMovieId: () => {},
 };
 
-export const BannerMovieContext =
-  createContext<BannerMovieContextType>(defaultContextValue);
+export const MasterContext =
+  createContext<MasterDataContext>(defaultContextValue);
 
 interface BannerContextProps {
   children: ReactNode;
@@ -56,7 +56,7 @@ interface BannerContextProps {
 const API_KEY = "c7cf1258a5aa723e8a98f08f639e86b6";
 const BASE_URL = "https://api.themoviedb.org/3";
 
-const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
+const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [singleMovie, setSingleMovie] = useState<{}>({});
   const [movies, setMovies] = useState<any[]>([]);
   const [searchResult, setSearchResult] = useState<any[]>([]);
@@ -70,7 +70,6 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
   const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>("");
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -168,7 +167,7 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     fetchSimilarMovies();
   }, [movieId]);
 
-  const contextValue: BannerMovieContextType = {
+  const contextValue: MasterDataContext = {
     movies,
     sliderData,
     searchResult,
@@ -186,14 +185,14 @@ const BannerContext: React.FC<BannerContextProps> = ({ children }) => {
     setDetailsType,
     movieId,
     setMovieId,
-    movieOrTv
+    movieOrTv,
   };
 
   return (
-    <BannerMovieContext.Provider value={contextValue}>
+    <MasterContext.Provider value={contextValue}>
       {children}
-    </BannerMovieContext.Provider>
+    </MasterContext.Provider>
   );
 };
 
-export default BannerContext;
+export default MainContext;

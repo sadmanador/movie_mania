@@ -1,10 +1,10 @@
-import { BannerMovieContext } from "@/context/BannerContext";
-import React, { useContext } from "react";
+import { MasterContext } from "@/context/MasterContext";
+import { useContext } from "react";
 
 const Pagination = () => {
-  const { setPage, page } = useContext(BannerMovieContext);
+  const { setPage, page } = useContext(MasterContext);
 
-  console.log(page)
+  console.log(page);
 
   return (
     <div className="my-10">

@@ -1,10 +1,10 @@
 "use client";
-import { BannerMovieContext } from "@/context/BannerContext";
+import { MasterContext } from "@/context/MasterContext";
 import { useContext, useEffect, useState } from "react";
 import SingleBanner from "../SingleBanner/SingleBanner";
 
 const Banner = () => {
-  const { movies } = useContext(BannerMovieContext);
+  const { movies } = useContext(MasterContext);
 
   const [currentItem, setCurrentItem] = useState(1);
   const [progress, setProgress] = useState(0);
