@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../MovieCard/MovieCard";
-import TVshowCard from "../TVshowCard/TVshowCard";
+
+
+import MovieCard from "../CardGroup/CardDetails/MovieCard/MovieCard";
+import TVshowCard from "../CardGroup/CardDetails/TVshowCard/TVshowCard";
 
 interface SimilarMovieGroupProps {
   movieId: string;

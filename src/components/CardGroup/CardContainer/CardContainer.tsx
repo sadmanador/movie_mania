@@ -1,15 +1,17 @@
 import { MasterContext } from "@/context/MasterContext";
 import { useContext, useEffect } from "react";
-import MovieCard from "../MovieCard/MovieCard";
 import Pagination from "../Pagination/Pagination";
-import TVshowCard from "../TVshowCard/TVshowCard";
+import MovieCard from "../CardDetails/MovieCard/MovieCard";
+import TVshowCard from "@/components/CardGroup/CardDetails/TVshowCard/TVshowCard";
+
+
 
 interface CardGroupProps {
   streamingType: string;
   activeTab: string;
 }
 
-const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
+const CardContainer: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
   const { movies, setMovieOrTv, setTrendingOptions } =
     useContext(MasterContext);
 
@@ -37,4 +39,4 @@ const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
   );
 };
 
-export default CardGroup;
+export default CardContainer;

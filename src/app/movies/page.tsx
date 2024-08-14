@@ -1,5 +1,5 @@
 "use client";
-import CardGroup from "@/components/CardGroup/CardGroup";
+import CardContainer from "@/components/CardGroup/CardContainer/CardContainer";
 import MainContext from "@/context/MasterContext";
 import { useState } from "react";
 
@@ -52,7 +52,7 @@ const MoviesPage = () => {
           Up Coming
         </a>
       </div>
-      <CardGroup streamingType="movie" activeTab={activeTab} />
+      <CardContainer streamingType="movie" activeTab={activeTab} />
     </MainContext>
   );
 };

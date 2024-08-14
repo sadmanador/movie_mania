@@ -1,5 +1,7 @@
 "use client";
-import CardGroup from "@/components/CardGroup/CardGroup";
+
+
+import CardContainer from "@/components/CardGroup/CardContainer/CardContainer";
 import MainContext, {  MasterContext } from "@/context/MasterContext";
 import { useContext, useState } from "react";
 
@@ -54,7 +56,7 @@ const TVshowPage = () => {
           </a>
         </div>
 
-        <CardGroup streamingType="tv" activeTab={activeTab} />
+        <CardContainer streamingType="tv" activeTab={activeTab} />
       </MainContext>
     </>
   );
