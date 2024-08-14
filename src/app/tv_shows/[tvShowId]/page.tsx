@@ -90,7 +90,7 @@ const SingleTvShowPage = () => {
     const fetchMovieImages = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericTvShowId}/images?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${"https://api.themoviedb.org/3"}/tv/${numericTvShowId}/images?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
         );
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -259,7 +259,7 @@ const SingleTvShowPage = () => {
                 >
                   <Image
                     className="object-cover"
-                    src={`https://image.tmdb.org/t/p/w500${scene.file_path}`}
+                    src={`https://image.tmdb.org/t/p/original/${scene.file_path}`}
                     alt={`Scene ${index + 1}`}
                     width={500}
                     height={281}

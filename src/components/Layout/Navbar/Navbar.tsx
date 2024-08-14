@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import ThemeToggleButton from "../DarkMode/DarkMode";
-import SearchBox from "../SearchBox/SearchBox";
+import SearchBox from "@/components/SearchBox/SearchBox";
+import ThemeToggleButton from "@/components/ThemeToggleButton/ThemeToggleButton";
 
 const Navbar = () => {
   return (

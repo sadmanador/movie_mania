@@ -1,6 +1,6 @@
 import { MasterContext } from "@/context/MasterContext";
 import { useContext, useEffect, useState } from "react";
-import SingleSlide from "../SingleSlide/SingleSlide";
+import SingleSlide from "@/components/SingleSlide/SingleSlide";
 
 const Slider = () => {
   const { sliderData } = useContext(MasterContext);

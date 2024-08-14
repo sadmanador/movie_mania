@@ -1,9 +1,8 @@
 "use client";
 import { TVShow } from "@/types/TvShowsTypes";
-import { Rating, Typography } from "@mui/material";
-import Image from "next/image";
+import { Rating } from "@mui/material";
 import Link from "next/link";
-import "./TVshowCard.css"
+import "./TVshowCard.css";
 
 const TVshowCard = ({ movie }: { movie: TVShow }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;

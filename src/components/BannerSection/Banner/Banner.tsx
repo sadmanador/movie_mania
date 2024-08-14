@@ -1,7 +1,7 @@
 "use client";
-import { MasterContext } from "@/context/MasterContext";
 import { useContext, useEffect, useState } from "react";
-import SingleBanner from "../SingleBanner/SingleBanner";
+import { MasterContext } from "@/context/MasterContext";
+import SingleBanner from "@/components/BannerSection/SingleBanner/SingleBanner";
 
 const Banner = () => {
   const { movies } = useContext(MasterContext);

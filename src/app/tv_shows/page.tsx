@@ -1,6 +1,4 @@
 "use client";
-
-
 import CardContainer from "@/components/CardGroup/CardContainer/CardContainer";
 import MainContext, {  MasterContext } from "@/context/MasterContext";
 import { useContext, useState } from "react";

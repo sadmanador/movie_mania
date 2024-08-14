@@ -1,7 +1,7 @@
 import { MasterContext } from "@/context/MasterContext";
 import { useContext, useEffect } from "react";
-import Pagination from "../Pagination/Pagination";
-import MovieCard from "../CardDetails/MovieCard/MovieCard";
+import Pagination from "@/components/CardGroup/Pagination/Pagination";
+import MovieCard from "@/components/CardGroup/CardDetails/MovieCard/MovieCard";
 import TVshowCard from "@/components/CardGroup/CardDetails/TVshowCard/TVshowCard";
 
 

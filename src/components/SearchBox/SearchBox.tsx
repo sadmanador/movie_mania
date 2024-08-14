@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import SearchResultCard from "../SearchResultCard/SearchResultCard";
+import SearchResultCard from "@/components/SearchResultCard/SearchResultCard";
 const API_KEY = "c7cf1258a5aa723e8a98f08f639e86b6";
 const BASE_URL = "https://api.themoviedb.org/3";
 
