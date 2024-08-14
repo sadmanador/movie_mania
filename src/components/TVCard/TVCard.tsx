@@ -18,7 +18,7 @@ const TVshowCard = ({ movie }: { movie: TVShow }) => {
       <div>
         <img src={imageUrl} className="w-full object-cover" alt={movie.name} />
       </div>
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-transparent to-black">
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-black hover:via-transparent hover:to-black">
         <div className="flex justify-between items-center p-4 rating-bar">
           <small className="text-xs">Total votes: {movie.vote_count}</small>
           <Rating
