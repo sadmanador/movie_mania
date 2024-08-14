@@ -87,7 +87,6 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
         }
 
         const data = await response.json();
-        console.log("Fetched Data:", data);
         setMovies(data.results);
       } catch (error) {
         setError(error as Error);

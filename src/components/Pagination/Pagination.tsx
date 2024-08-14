@@ -4,7 +4,7 @@ import { useContext } from "react";
 const Pagination = () => {
   const { setPage, page } = useContext(MasterContext);
 
-  console.log(page);
+
 
   return (
     <div className="my-10">

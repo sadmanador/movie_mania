@@ -8,7 +8,6 @@ import "./TVshowCard.css"
 const TVshowCard = ({ movie }: { movie: TVShow }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-  console.log(movie);
 
   return (
     <Link

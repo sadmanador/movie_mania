@@ -14,7 +14,7 @@ const CardGroup: React.FC<CardGroupProps> = ({ streamingType, activeTab }) => {
     useContext(MasterContext);
 
   useEffect(() => {
-    console.log(`Setting movieOrTv to ${streamingType}`);
+
     setMovieOrTv(streamingType);
   }, [streamingType, setMovieOrTv]);
 
