@@ -7,7 +7,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 
-const SingleTvShowPage = () => {
+const DetailedTvShowPage = () => {
   const { detailsType } = useContext(MasterContext);
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
@@ -307,4 +307,4 @@ const SingleTvShowPage = () => {
   );
 };
 
-export default SingleTvShowPage;
+export default DetailedTvShowPage;

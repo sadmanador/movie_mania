@@ -6,7 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const SingleMoviePage = () => {
+const DetailedMoviePage = () => {
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
   const [credits, setCredits] = useState<any>(null); // For movie credits
@@ -305,4 +305,4 @@ const SingleMoviePage = () => {
   );
 };
 
-export default SingleMoviePage;
+export default DetailedMoviePage;

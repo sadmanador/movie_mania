@@ -1,20 +1,16 @@
 "use client";
-import { MasterContext } from "@/context/MasterContext";
 import { Movie } from "@/types/MovieTypes";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useContext } from "react";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  const { movieOrTv } = useContext(MasterContext);
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-  const href = movieOrTv === "tv" ? `/tv_shows/${movie.id}` : `/${movie.id}`;
 
   return (
     <Link
-      href={href}
+      href={`/${movie.id}`}
       className="card bg-slate-700 w-auto shadow-xl cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
     >
       <figure>
