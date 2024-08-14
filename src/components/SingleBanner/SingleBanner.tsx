@@ -1,4 +1,5 @@
 import { Movie } from "@/types/MovieTypes";
+import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 // Adjust the path to your Movie type
@@ -51,7 +52,10 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
             {movie.overview}
           </p>
           <p className="mt-4 text-stone-400">Vote: {movie.vote_count}</p>
-          <p className="mt-4 text-stone-400">Rating: {movie.vote_average}</p>
+          <p>
+              <Typography component="legend">Total votes: {movie.vote_count}</Typography>
+              <Rating name="read-only" readOnly value={movie.vote_average /2} precision={.5} max={5} />
+            </p>
         </div>
       </div>
     </div>

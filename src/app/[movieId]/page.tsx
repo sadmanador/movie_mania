@@ -1,5 +1,4 @@
 "use client";
-
 import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
 import { Rating, Typography } from "@mui/material";
@@ -200,6 +199,7 @@ const SingleMoviePage = () => {
             </div>
           </div>
 
+          {/* cast part */}
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             Cast
           </h2>
@@ -242,6 +242,7 @@ const SingleMoviePage = () => {
             )}
           </div>
 
+{/* Movie scene part */}
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             Movie Scenes
           </h2>
