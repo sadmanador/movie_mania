@@ -20,12 +20,12 @@ const ThemeToggleButton = () => {
 
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "business" ? "pastel" : "business"));
+    setTheme((prevTheme) => (prevTheme === "dracula" ? "retro" : "dracula"));
   };
 
   return (
     <div onClick={toggleTheme}>
-      {theme === "business" ? (
+      {theme === "dracula" ? (
         <button className="bg-neutral-700 p-2 rounded-full hover:bg-neutral-400">
           <svg
             width="25px"

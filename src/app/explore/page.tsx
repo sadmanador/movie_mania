@@ -4,7 +4,6 @@ import BannerContext, { BannerMovieContext } from "@/context/BannerContext";
 import { useContext, useState } from "react";
 
 const MoviesPage = () => {
-  const { setTrendingOptions } = useContext(BannerMovieContext);
   const [activeTab, setActiveTab] = useState<string>("top_rated");
 
   const handleTabClick = (tab: string) => {

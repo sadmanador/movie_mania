@@ -6,15 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
-  const { movieOrTv } = useContext(BannerMovieContext);
+const TVshowCard = ({ movie }: { movie: Movie }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-
-  const href = movieOrTv === "tv" ? `/tv_shows/${movie.id}` : `/${movie.id}`;
 
   return (
     <Link
-      href={href}
+      href={`/tv_shows/${movie.id}`}
       className="card bg-slate-700 w-auto shadow-xl cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
     >
       <figure>
@@ -29,8 +26,16 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <div className="card-actions justify-start">
           <div>
             <p>
-              <Typography component="legend">Total votes: {movie.vote_count}</Typography>
-              <Rating name="read-only" readOnly value={movie.vote_average /2} precision={.5} max={5} />
+              <Typography component="legend">
+                Total votes: {movie.vote_count}
+              </Typography>
+              <Rating
+                name="read-only"
+                readOnly
+                value={movie.vote_average / 2}
+                precision={0.5}
+                max={5}
+              />
             </p>
           </div>
           <div className="badge badge-outline">
@@ -45,4 +50,4 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   );
 };
 
-export default MovieCard;
+export default TVshowCard;

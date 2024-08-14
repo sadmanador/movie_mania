@@ -46,7 +46,7 @@ const SingleMoviePage = () => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}/videos?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${"https://api.themoviedb.org/3"}/tv/${numericMovieId}/videos?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
         );
         if (!res.ok) {
           throw new Error("Network response was not ok");
