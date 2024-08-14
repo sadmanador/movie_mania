@@ -17,7 +17,7 @@ const DetailedMoviePage = () => {
   const numericMovieId = Number(pathWithoutSlash);
 
   const imageUrl = movie
-    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
     : "";
   const backDropImg = movie
     ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
@@ -129,8 +129,8 @@ const DetailedMoviePage = () => {
               <div>
                 <Image
                   className="w-24 lg:w-64 "
-                  width={250}
-                  height={200}
+                  width={450}
+                  height={400}
                   src={imageUrl}
                   alt={movie.title}
                 />
