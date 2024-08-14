@@ -24,7 +24,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         </p>
         <div className="card-actions justify-start">
           <div>
-            <p>
+            <div>
               <Typography component="legend">
                 Total votes: {movie.vote_count}
               </Typography>
@@ -35,7 +35,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 precision={0.5}
                 max={5}
               />
-            </p>
+            </div>
           </div>
           <div className="badge badge-outline">
             Release Date:{" "}

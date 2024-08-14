@@ -27,8 +27,8 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
       }`}
     >
       <Image
-      width={1600}
-      height={800}
+        width={1600}
+        height={800}
         className="object-top lg:max-h-[65vh] max-h-screen w-full object-cover"
         src={backDropImg}
         alt={movie.title}
@@ -52,10 +52,18 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
             {movie.overview}
           </p>
           <p className="mt-4 text-stone-400">Vote: {movie.vote_count}</p>
-          <p>
-              <Typography component="legend">Total votes: {movie.vote_count}</Typography>
-              <Rating name="read-only" readOnly value={movie.vote_average /2} precision={.5} max={5} />
-            </p>
+          <div>
+            <Typography component="legend">
+              Total votes: {movie.vote_count}
+            </Typography>
+            <Rating
+              name="read-only"
+              readOnly
+              value={movie.vote_average / 2}
+              precision={0.5}
+              max={5}
+            />
+          </div>
         </div>
       </div>
     </div>

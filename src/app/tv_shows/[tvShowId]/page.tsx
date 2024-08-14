@@ -254,7 +254,7 @@ const DetailedTvShowPage = () => {
               sceneImages.map((scene: any, index: number) => (
                 <div
                   key={index}
-                  className="relative w-full max-w-sm cursor-pointer"
+                  className="relative w-full max-w-sm cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
                   onClick={() => handleImageClick(scene.file_path)}
                 >
                   <Image

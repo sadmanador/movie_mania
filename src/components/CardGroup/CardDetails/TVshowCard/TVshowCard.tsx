@@ -3,6 +3,7 @@ import { TVShow } from "@/types/TvShowsTypes";
 import { Rating } from "@mui/material";
 import Link from "next/link";
 import "./TVshowCard.css";
+import Image from "next/image";
 
 const TVshowCard = ({ movie }: { movie: TVShow }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -14,7 +15,7 @@ const TVshowCard = ({ movie }: { movie: TVShow }) => {
       className="tv-card relative mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
     >
       <div>
-        <img src={imageUrl} className="w-full object-cover" alt={movie.name} />
+        <Image width={500} height={500} src={imageUrl} className="w-full object-cover" alt={movie.name} />
       </div>
       <div className="absolute inset-0 z-10 hover:bg-gradient-to-t from-black via-transparent to-black">
         <div className="flex justify-between items-center p-4 rating-bar">
