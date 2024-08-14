@@ -1,6 +1,7 @@
 "use client";
 import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
+import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -90,7 +91,8 @@ const SingleMoviePage = () => {
                 </p>
                 <p className="mt-4 text-stone-400">Vote: {movie.vote_count}</p>
                 <p className="mt-4 text-stone-400">
-                  Rating: {movie.vote_average}
+                   <Typography component="legend">Total votes: {movie.vote_count}</Typography>
+                  <Rating name="read-only" readOnly value={movie.vote_average /2} precision={.5} max={5} />
                 </p>
                 <p className="mt-4 text-stone-400">
                   Genres:{" "}
