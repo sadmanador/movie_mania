@@ -282,7 +282,7 @@ const DetailedTvShowPage = () => {
               {selectedImage && (
                 <Image
                   className="w-full"
-                  src={`https://image.tmdb.org/t/p/w1280${selectedImage}`}
+                  src={`https://image.tmdb.org/t/p/original${selectedImage}`}
                   alt="Selected Scene"
                   width={800}
                   height={450}
