@@ -11,7 +11,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   return (
     <Link
       href={`/${movie.id}`}
-      className="card bg-slate-700 w-auto shadow-xl cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
+      className="card bg-slate-700 w-auto shadow-[0_4px_8px_0_rgba(0,0,0,0.3)] hover:shadow-[3px_4px_8px_2px_rgba(0,0,0,0.5)] hover:transition-all duration-300 cursor-pointer sm:hover:scale-[1.04] transition-transform ease-in-out "
     >
       <figure>
         <Image width={300} height={300} src={imageUrl} alt={movie.title} />

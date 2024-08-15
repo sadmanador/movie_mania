@@ -12,7 +12,7 @@ const TVshowCard = ({ movie }: { movie: TVShow }) => {
   return (
     <Link
       href={`/tv_shows/${movie.id}`}
-      className="tv-card relative mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
+      className="tv-card relative mx-auto max-w-md overflow-hidden rounded-lg bg-white shadow-[0_4px_8px_0_rgba(0,0,0,0.3)] hover:shadow-[3px_4px_8px_2px_rgba(0,0,0,0.5)] hover:transition-all cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
     >
       <div>
         <Image width={500} height={500} src={imageUrl} className="w-full object-cover" alt={movie.name} />

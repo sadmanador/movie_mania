@@ -45,7 +45,7 @@ const SearchBox = () => {
       </div>
       {/* Conditionally render the results */}
       {response && (
-        <div className="p-2 md:w-[600px] h-64 bg-base-200 absolute right-0 overflow-auto">
+        <div className="p-2 md:w-[600px] lg:h-[450px] md:h-[380px] h-60 bg-base-300 absolute right-0 overflow-auto">
           {results.map((movie, index) => (
             <SearchResultCard key={index} movie={movie} />
           ))}

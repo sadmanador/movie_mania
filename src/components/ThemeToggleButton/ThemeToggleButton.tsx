@@ -20,7 +20,7 @@ const ThemeToggleButton = () => {
 
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dracula" ? "retro" : "dracula"));
+    setTheme((prevTheme) => (prevTheme === "dracula" ? "nord" : "dracula"));
   };
 
   return (
