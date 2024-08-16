@@ -18,8 +18,8 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       <figure>
         <Image width={300} height={300} src={imageUrl} alt={movie.title} />
       </figure>
-      <div className="card-body py-2">
-        <h2 className="card-title hover:text-yellow-500 text-lg">
+      <div className="card-body py-2 tooltip" data-tip={movie.title}>
+        <h2 className="card-title hover:text-yellow-500 text-lg" >
           {movie.title.length >= 20
             ? movie.title.slice(0, 16) + "..."
             : movie.title}
