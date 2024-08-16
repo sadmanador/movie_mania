@@ -1,29 +1,5 @@
+import { MasterDataContext } from "@/types/MasterContextType";
 import React, { createContext, ReactNode, useEffect, useState } from "react";
-
-interface MasterDataContext {
-  movies: any[];
-  searchResult: any[];
-  sliderData: any[];
-  similarMovies: any[];
-  loading: boolean;
-  error: Error | null;
-  page: number;
-  detailsType: "movie" | "tv";
-  movieOrTv: string;
-  singleMovie: {};
-  movieId: string;
-  setPage: (page: number | ((prev: number) => number)) => void;
-  setQuery: (query: string | ((prev: string) => string)) => void;
-  setDetailsType: (
-    detailsType: "movie" | "tv" | ((prev: "movie" | "tv") => "movie" | "tv")
-  ) => void;
-  setMovieOrTv: (movieOrTv: string | ((prev: string) => string)) => void;
-  setTrendingOptions: (
-    trendingOptions: string | ((prev: string) => string)
-  ) => void;
-  setSingleMovie: (singleMovie: {} | ((prev: {}) => {})) => void;
-  setMovieId: (movieId: string | ((prev: string) => string)) => void;
-}
 
 const defaultContextValue: MasterDataContext = {
   movies: [],
@@ -70,7 +46,6 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>("");
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,9 +161,7 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
     movieId,
     setMovieId,
     movieOrTv,
-
   };
-
 
   return (
     <MasterContext.Provider value={contextValue}>
