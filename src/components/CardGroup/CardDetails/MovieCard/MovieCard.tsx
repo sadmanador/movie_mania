@@ -18,7 +18,7 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       </figure>
       <div className="card-body py-2">
         <h2 className="card-title hover:text-yellow-500 text-lg">
-          {movie.title.length >= 20 ? movie.title.slice(0, 20) + "..." : movie.title}
+          {movie.title.length >= 20 ? movie.title.slice(0, 16) + "..." : movie.title}
         </h2>
 
         <div className="card-actions justify-start">

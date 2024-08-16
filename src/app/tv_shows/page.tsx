@@ -1,6 +1,6 @@
 "use client";
 import CardContainer from "@/components/CardGroup/CardContainer/CardContainer";
-import MainContext, {  MasterContext } from "@/context/MasterContext";
+import MainContext, { MasterContext } from "@/context/MasterContext";
 import { useContext, useState } from "react";
 
 const TVshowPage = () => {
@@ -15,7 +15,7 @@ const TVshowPage = () => {
   return (
     <>
       <MainContext>
-        <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
+        <h2 className="text-2xl text-yellow-500 font-bold ml-20 my-8">
           Explore TV Shows
         </h2>
         <div role="tablist" className="tabs tabs-lifted tabs-md my-10 text-xl">

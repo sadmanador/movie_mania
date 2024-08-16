@@ -1,6 +1,10 @@
 import { VideoData } from "@/types/YoutubeType";
 
-const VideoPlayer = ({ video }: { video: VideoData }) => {
+interface VideoPlayerProps {
+  video: VideoData;
+}
+
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ video }) => {
   return (
     <div>
       <iframe

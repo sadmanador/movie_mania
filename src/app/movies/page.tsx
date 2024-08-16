@@ -12,7 +12,7 @@ const MoviesPage = () => {
 
   return (
     <MainContext>
-      <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
+      <h2 className="text-2xl text-yellow-500 font-bold ml-20 my-8">
         Explore Movies
       </h2>
       <div role="tablist" className="tabs tabs-lifted tabs-md my-10 text-xl">
