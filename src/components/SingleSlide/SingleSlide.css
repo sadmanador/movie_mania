@@ -1,3 +1,7 @@
+.single-slider-card {
+  overflow-y: hidden;
+}
+
 .single-slider-overlay {
   display: flex;
   flex-direction: column;
