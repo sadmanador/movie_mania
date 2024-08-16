@@ -1,17 +1,14 @@
 "use client";
-import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
-import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
-import { Rating, Typography } from "@mui/material";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import noImage from "@/assets/no_image.jpg";
 import noBanner from "@/assets/no_banner.png";
+import noImage from "@/assets/no_image.jpg";
 import Castings from "@/components/Castings/Castings";
+import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import SceneGallery from "@/components/SceneGallery/SceneGallery";
 import SceneModal from "@/components/SceneModal/SceneModal";
+import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import Trailers from "@/components/Trailers/Trailers";
-import MediaDetails from "@/components/MediaDetails/MediaDetails";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const DetailedMoviePage = () => {
   const [movie, setMovie] = useState<any>(null);
@@ -20,8 +17,8 @@ const DetailedMoviePage = () => {
   const [sceneImages, setSceneImages] = useState<any>(null); // For movie scene images
   const [selectedImage, setSelectedImage] = useState<string | null>(null); // For the selected scene image
   const pathname = usePathname();
-  const pathWithoutSlash = pathname?.replace(/^\/+/, "");
-  const numericMovieId = Number(pathWithoutSlash);
+  const lastPartOfPath = pathname?.split("/movies/")[1];
+  const numericMovieId = Number(lastPartOfPath);
 
   const imageUrl =
     movie && movie.poster_path
@@ -116,7 +113,7 @@ const DetailedMoviePage = () => {
 
   const handleOpenModal = (image: string) => {
     setSelectedImage(image);
-    const dialog = document.getElementById('scene_modal') as HTMLDialogElement;
+    const dialog = document.getElementById("scene_modal") as HTMLDialogElement;
     if (dialog) {
       dialog.showModal();
     }
@@ -124,7 +121,7 @@ const DetailedMoviePage = () => {
 
   const handleCloseModal = () => {
     setSelectedImage(null);
-    const dialog = document.getElementById('scene_modal') as HTMLDialogElement;
+    const dialog = document.getElementById("scene_modal") as HTMLDialogElement;
     if (dialog) {
       dialog.close();
     }
@@ -147,14 +144,17 @@ const DetailedMoviePage = () => {
             sceneImages={sceneImages}
             handleImageClick={handleOpenModal}
           />
-          <SceneModal selectedImage={selectedImage} onClose={handleCloseModal} />
+          <SceneModal
+            selectedImage={selectedImage}
+            onClose={handleCloseModal}
+          />
           <SimilarMovieGroup
             mediaType={"movie"}
             movieId={numericMovieId.toString()}
           />
         </>
       ) : (
-        <p>Loading...</p>
+        <p>Loading...single</p>
       )}
     </div>
   );

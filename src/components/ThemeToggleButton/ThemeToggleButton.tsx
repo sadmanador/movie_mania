@@ -1,10 +1,8 @@
 "use client";
-import { MasterContext } from "@/context/MasterContext";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useState } from "react";
 
 const ThemeToggleButton = () => {
   const [theme, setTheme] = useState<string>("night");
-  const {setGlobalTheme} = useContext(MasterContext);
 
 
   useEffect(() => {
@@ -23,7 +21,6 @@ const ThemeToggleButton = () => {
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "night" ? "nord" : "night"));
-    setGlobalTheme((prevTheme) => (prevTheme === "night" ? "nord" : "night"))
   };
 
   return (

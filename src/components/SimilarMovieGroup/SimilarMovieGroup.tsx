@@ -46,16 +46,18 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
   return (
     <>
       <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
-        Similar {mediaType == "movie"? "Movie":"TV Shows"}
+        Similar {mediaType == "movie" ? "Movie" : "TV Shows"}
       </h2>
       <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 lg:mx-14 mx-4">
-        {similarMovies.map((movie, index) =>
-          mediaType == "movie" ? (
-            <MovieCard key={index} movie={movie} />
-          ) : (
-            <TVshowCard key={index} movie={movie} />
-          )
-        )}
+        {similarMovies
+          .filter((movie) => movie.poster_path)
+          .map((movie, index) =>
+            mediaType == "movie" ? (
+              <MovieCard key={index} movie={movie} />
+            ) : (
+              <TVshowCard key={index} movie={movie} />
+            )
+          )}
       </div>
     </>
   );

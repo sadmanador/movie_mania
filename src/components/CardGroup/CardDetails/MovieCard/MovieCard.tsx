@@ -3,14 +3,19 @@ import { Movie } from "@/types/MovieTypes";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import noImage from "@/assets/no_image.jpg";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
-  const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const imageUrl = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : noImage;
+    
+
+  console.log("similar", movie);
 
   return (
     <Link
-      href={`/${movie.id}`}
+      href={`/movies/${movie.id}`}
       className={`card bg-base-300 w-auto shadow-[0_4px_8px_0_rgba(0,0,0,0.3)] hover:shadow-[3px_4px_8px_2px_rgba(0,0,0,0.5)] hover:transition-all duration-300 cursor-pointer sm:hover:scale-[1.04] transition-transform ease-in-out`}
     >
       <figure>
@@ -18,7 +23,9 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       </figure>
       <div className="card-body py-2">
         <h2 className="card-title hover:text-yellow-500 text-lg">
-          {movie.title.length >= 20 ? movie.title.slice(0, 16) + "..." : movie.title}
+          {movie.title.length >= 20
+            ? movie.title.slice(0, 16) + "..."
+            : movie.title}
         </h2>
 
         <div className="card-actions justify-start">
