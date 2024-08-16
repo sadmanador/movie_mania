@@ -33,7 +33,7 @@ const MediaDetails = ({
       <Image
         width={1200}
         height={800}
-        className="object-center lg:max-h-[75vh] h-[75vh] w-full object-cover"
+        className="object-top lg:max-h-[75vh] h-[75vh] w-full object-cover"
         src={backDropImg}
         alt={movie.title}
       />
