@@ -1,7 +1,7 @@
 "use client";
 import Banner from "@/components/BannerSection/Banner/Banner";
 import CardContainer from "@/components/CardGroup/CardContainer/CardContainer";
-import Slider from "@/components/Slider/Slider";
+import SliderSection from "@/components/SliderSection/SliderSection";
 import MainContext from "@/context/MasterContext";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <MainContext>
       <div className="">
         <Banner />
-        <Slider />
+        <SliderSection />
         <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
           Top Rated Movies
         </h2>
