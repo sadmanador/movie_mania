@@ -27,7 +27,7 @@ const TVshowCard = ({ movie }: { movie: TVShow }) => {
       </div>
       <div className="absolute inset-0 z-10 hover:bg-gradient-to-t from-black via-transparent to-black">
         <div className="flex justify-between items-center p-4 rating-bar">
-          <small className="text-xs">Total votes: {movie.vote_count}</small>
+          <small className="text-xs text-gray-200">Total votes: {movie.vote_count}</small>
           <Rating
             name="read-only"
             readOnly
