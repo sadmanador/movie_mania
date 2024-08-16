@@ -12,7 +12,6 @@ interface MasterDataContext {
   movieOrTv: string;
   singleMovie: {};
   movieId: string;
-  globalTheme: string;
   setPage: (page: number | ((prev: number) => number)) => void;
   setQuery: (query: string | ((prev: string) => string)) => void;
   setDetailsType: (
@@ -24,7 +23,6 @@ interface MasterDataContext {
   ) => void;
   setSingleMovie: (singleMovie: {} | ((prev: {}) => {})) => void;
   setMovieId: (movieId: string | ((prev: string) => string)) => void;
-  setGlobalTheme: (theme: string | ((prev: string) => string)) => void;
 }
 
 const defaultContextValue: MasterDataContext = {
@@ -39,7 +37,6 @@ const defaultContextValue: MasterDataContext = {
   movieOrTv: "movie",
   singleMovie: {},
   movieId: "",
-  globalTheme: "nord",
   setPage: () => {},
   setQuery: () => {},
   setSingleMovie: () => {},
@@ -47,7 +44,6 @@ const defaultContextValue: MasterDataContext = {
   setTrendingOptions: () => {},
   setDetailsType: () => {},
   setMovieId: () => {},
-  setGlobalTheme: () => {},
 };
 
 export const MasterContext =
@@ -74,7 +70,7 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>("");
-  const [globalTheme, setGlobalTheme] = useState<string>("dracula");
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -190,8 +186,7 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
     movieId,
     setMovieId,
     movieOrTv,
-    globalTheme,
-    setGlobalTheme,
+
   };
 
 
