@@ -24,7 +24,7 @@ const ThemeToggleButton = () => {
   };
 
   return (
-    <div onClick={toggleTheme}>
+    <div className="tooltip tooltip-bottom" data-tip={theme === "night" ? "Light Mode" : "Dark Mode"} onClick={toggleTheme}>
       {theme === "night" ? (
         <button className="bg-neutral-700 p-2 rounded-full hover:bg-neutral-400">
           <svg

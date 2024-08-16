@@ -1,6 +1,7 @@
 import { Movie } from "@/types/MovieTypes";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 // Adjust the path to your Movie type
 
@@ -56,14 +57,20 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
             <Typography component="legend">
               Total votes: {movie.vote_count}
             </Typography>
-            <Rating
-              name="read-only"
-              readOnly
-              value={movie.vote_average / 2}
-              precision={0.5}
-              max={5}
-            />
+            <div
+              className="tooltip tooltip-right"
+              data-tip={(movie.vote_average / 2).toFixed(1) + ` / 5`}
+            >
+              <Rating
+                name="read-only"
+                readOnly
+                value={movie.vote_average / 2}
+                precision={0.5}
+                max={5}
+              />
+            </div>
           </div>
+          <Link href={`/movies/${movie.id}`} className="btn bg-[#334155] hover:bg-[#242e3d]">View Details</Link>
         </div>
       </div>
     </div>

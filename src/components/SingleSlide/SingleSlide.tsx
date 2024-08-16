@@ -18,14 +18,19 @@ const SingleSlide = ({ movie }: { movie: Movie }) => {
           <small className="text-xs text-gray-200">
             Total votes: {movie.vote_count}
           </small>
-          <Rating
-            name="read-only"
-            readOnly
-            size="small"
-            value={movie.vote_average / 2}
-            precision={0.5}
-            max={5}
-          />
+          <div
+            className="tooltip tooltip-bottom"
+            data-tip={(movie.vote_average / 2).toFixed(1) + ` / 5`}
+          >
+            <Rating
+              name="read-only"
+              readOnly
+              size="small"
+              value={movie.vote_average / 2}
+              precision={0.5}
+              max={5}
+            />
+          </div>
         </div>
         <h3 className="absolute p-4 bottom-0 mx-auto text-xl font-medium text-white single-slider-overlay-bottom">
           {movie.title}

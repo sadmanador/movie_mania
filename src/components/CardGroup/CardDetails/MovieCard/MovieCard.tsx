@@ -31,13 +31,18 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
               <Typography component="legend">
                 Total votes: {movie.vote_count}
               </Typography>
-              <Rating
-                name="read-only"
-                readOnly
-                value={movie.vote_average / 2}
-                precision={0.5}
-                max={5}
-              />
+              <div
+                className="tooltip tooltip-right"
+                data-tip={(movie.vote_average / 2).toFixed(1) + ` / 5`}
+              >
+                <Rating
+                  name="read-only"
+                  readOnly
+                  value={movie.vote_average / 2}
+                  precision={0.5}
+                  max={5}
+                />
+              </div>
             </div>
           </div>
         </div>

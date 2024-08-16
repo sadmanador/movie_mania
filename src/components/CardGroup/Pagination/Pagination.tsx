@@ -73,8 +73,8 @@ const Pagination = () => {
               </>
             )}
 
-            <li>
-              <a className="inline-flex items-center border border-gray-500  px-4 py-2 text-gray-300 hover:bg-gray-200 cursor-not-allowed">
+            <li className="lg:tooltip" data-tip="Current page">
+              <a className="inline-flex items-center border border-gray-500  px-4 py-2 cursor-not-allowed text-yellow-500">
                 {page}
               </a>
             </li>

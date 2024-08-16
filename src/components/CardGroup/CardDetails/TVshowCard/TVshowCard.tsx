@@ -30,14 +30,19 @@ const TVshowCard = ({ movie }: { movie: TVShow }) => {
           <small className="text-xs text-gray-200">
             Total votes: {movie.vote_count}
           </small>
-          <Rating
-            name="read-only"
-            readOnly
-            size="small"
-            value={movie.vote_average / 2}
-            precision={0.5}
-            max={5}
-          />
+          <div
+            className="tooltip tooltip-bottom"
+            data-tip={(movie.vote_average / 2).toFixed(1) + ` / 5`}
+          >
+            <Rating
+              name="read-only"
+              readOnly
+              size="small"
+              value={movie.vote_average / 2}
+              precision={0.5}
+              max={5}
+            />
+          </div>
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 z-20 p-4 tvShow-info">

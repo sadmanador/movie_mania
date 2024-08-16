@@ -61,13 +61,18 @@ const MediaDetails = ({
                 <Typography component="legend">
                   Total votes: {movie.vote_count}
                 </Typography>
-                <Rating
-                  name="read-only"
-                  readOnly
-                  value={movie.vote_average / 2}
-                  precision={0.5}
-                  max={5}
-                />
+                <div
+                  className="tooltip tooltip-right"
+                  data-tip={(movie.vote_average / 2).toFixed(1) + ` / 5`}
+                >
+                  <Rating
+                    name="read-only"
+                    readOnly
+                    value={movie.vote_average / 2}
+                    precision={0.5}
+                    max={5}
+                  />
+                </div>
               </p>
               <p className="mt-4 text-stone-400">
                 Genres:{" "}
@@ -86,20 +91,18 @@ const MediaDetails = ({
               </p>
               <div className="md:flex gap-6 justify-start">
                 {featuredCrew && featuredCrew.length > 0 ? (
-                  featuredCrew
-                    .slice(0, 4)
-                    .map((member: any, index: number) => (
-                      <div key={index} className="">
-                        <div className="">
-                          <p className="text-white text-center text-[14px]">
-                            {member.name}
-                          </p>
-                          <p className="text-gray-400 text-center text-[12px]">
-                            {member.job}
-                          </p>
-                        </div>
+                  featuredCrew.slice(0, 4).map((member: any, index: number) => (
+                    <div key={index} className="">
+                      <div className="">
+                        <p className="text-white text-center text-[14px]">
+                          {member.name}
+                        </p>
+                        <p className="text-gray-400 text-center text-[12px]">
+                          {member.job}
+                        </p>
                       </div>
-                    ))
+                    </div>
+                  ))
                 ) : (
                   <p>No featured crew information available</p>
                 )}
