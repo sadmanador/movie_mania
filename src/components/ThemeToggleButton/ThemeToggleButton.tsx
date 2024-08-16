@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { MasterContext } from "@/context/MasterContext";
+import { useState, useEffect, useContext } from "react";
 
 const ThemeToggleButton = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("night");
+  const {setGlobalTheme} = useContext(MasterContext);
 
 
   useEffect(() => {
@@ -20,12 +22,13 @@ const ThemeToggleButton = () => {
 
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "dracula" ? "nord" : "dracula"));
+    setTheme((prevTheme) => (prevTheme === "night" ? "nord" : "night"));
+    setGlobalTheme((prevTheme) => (prevTheme === "night" ? "nord" : "night"))
   };
 
   return (
     <div onClick={toggleTheme}>
-      {theme === "dracula" ? (
+      {theme === "night" ? (
         <button className="bg-neutral-700 p-2 rounded-full hover:bg-neutral-400">
           <svg
             width="25px"

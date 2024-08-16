@@ -5,6 +5,9 @@ import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import noImage from "@/assets/no_image.jpg";
+import noBanner from "@/assets/no_banner.png";
+import Castings from "@/components/Castings/Castings";
 
 const DetailedMoviePage = () => {
   const [movie, setMovie] = useState<any>(null);
@@ -16,12 +19,15 @@ const DetailedMoviePage = () => {
   const pathWithoutSlash = pathname?.replace(/^\/+/, "");
   const numericMovieId = Number(pathWithoutSlash);
 
-  const imageUrl = movie
-    ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
-    : "";
-  const backDropImg = movie
-    ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-    : "";
+  const imageUrl =
+    movie && movie.poster_path
+      ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
+      : noImage;
+
+  const backDropImg =
+    movie && movie.backdrop_path
+      ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
+      : noBanner;
 
   useEffect(() => {
     const fetchMovieData = async () => {
@@ -203,31 +209,7 @@ const DetailedMoviePage = () => {
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             Cast
           </h2>
-          <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
-            {credits?.cast && credits.cast.length > 0 ? (
-              credits.cast.slice(0, 10).map((actor: any, index: number) => (
-                <div key={index} className="relative w-full max-w-[250px]">
-                  <Image
-                    className="object-top object-fill w-full h-62"
-                    src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                    alt={actor.name}
-                    width={150}
-                    height={300}
-                  />
-                  <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black to-transparent p-2">
-                    <div>
-                      <p className="text-white text-center">{actor.name}</p>
-                      <p className="text-gray-400 text-center text-[12px]">
-                        {actor.character}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>No cast information available</p>
-            )}
-          </div>
+          <Castings cast={credits?.cast || []} />
 
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
             Trailers
@@ -242,7 +224,7 @@ const DetailedMoviePage = () => {
             )}
           </div>
 
-{/* Movie scene part */}
+          {/* Movie scene part */}
           <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
             Movie Scenes
           </h2>
@@ -295,8 +277,6 @@ const DetailedMoviePage = () => {
             mediaType={"movie"}
             movieId={numericMovieId.toString()}
           />
-
-          
         </>
       ) : (
         <p>Loading...</p>

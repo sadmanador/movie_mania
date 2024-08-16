@@ -3,25 +3,24 @@ import { Movie } from "@/types/MovieTypes";
 import { Rating, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
-
   return (
     <Link
       href={`/${movie.id}`}
-      className="card bg-slate-700 w-auto shadow-[0_4px_8px_0_rgba(0,0,0,0.3)] hover:shadow-[3px_4px_8px_2px_rgba(0,0,0,0.5)] hover:transition-all duration-300 cursor-pointer sm:hover:scale-[1.04] transition-transform ease-in-out "
+      className={`card bg-base-300 w-auto shadow-[0_4px_8px_0_rgba(0,0,0,0.3)] hover:shadow-[3px_4px_8px_2px_rgba(0,0,0,0.5)] hover:transition-all duration-300 cursor-pointer sm:hover:scale-[1.04] transition-transform ease-in-out`}
     >
       <figure>
         <Image width={300} height={300} src={imageUrl} alt={movie.title} />
       </figure>
-      <div className="card-body text-gray-300">
-        <h2 className="card-title text-gray-100">{movie.title}</h2>
-        <p>
-          {movie.overview.slice(0, 40)}...
-          <span className="underline italic">more</span>
-        </p>
+      <div className="card-body py-2">
+        <h2 className="card-title hover:text-yellow-500 text-lg">
+          {movie.title.length >= 20 ? movie.title.slice(0, 20) + "..." : movie.title}
+        </h2>
+
         <div className="card-actions justify-start">
           <div>
             <div>
@@ -36,12 +35,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                 max={5}
               />
             </div>
-          </div>
-          <div className="badge badge-outline">
-            Release Date:{" "}
-            <span className="text-[12px] italic ml-2">
-              {movie.release_date}
-            </span>
           </div>
         </div>
       </div>
