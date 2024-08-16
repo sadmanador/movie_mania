@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import noImage from "@/assets/no_image.jpg";
 import noBanner from "@/assets/no_banner.png";
 import Castings from "@/components/Castings/Castings";
+import SceneGallery from "@/components/SceneGallery/SceneGallery";
 
 const DetailedMoviePage = () => {
   const [movie, setMovie] = useState<any>(null);
@@ -225,30 +226,11 @@ const DetailedMoviePage = () => {
           </div>
 
           {/* Movie scene part */}
-          <h2 className="text-2xl text-yellow-500 font-bold ml-16 my-8">
-            Movie Scenes
-          </h2>
-          <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
-            {sceneImages && sceneImages.length > 0 ? (
-              sceneImages.map((scene: any, index: number) => (
-                <div
-                  key={index}
-                  className="relative w-full max-w-sm cursor-pointer sm:hover:scale-[1.04] transition-transform duration-200 ease-in"
-                  onClick={() => handleImageClick(scene.file_path)}
-                >
-                  <Image
-                    className="object-cover"
-                    src={`https://image.tmdb.org/t/p/w500${scene.file_path}`}
-                    alt={`Scene ${index + 1}`}
-                    width={500}
-                    height={281}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>No scene images available</p>
-            )}
-          </div>
+          <SceneGallery
+          mediaType={"movie"}
+            sceneImages={sceneImages}
+            handleImageClick={handleImageClick}
+          />
 
           {/* Modal for viewing larger scene images */}
           <dialog id="scene_modal" className="modal">

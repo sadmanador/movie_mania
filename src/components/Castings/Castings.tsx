@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import './Castings.css'
 interface Actor {
   profile_path: string;
   name: string;
@@ -15,7 +15,7 @@ const Castings: React.FC<CastingsProps> = ({ cast }) => {
     <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
       {cast.length > 0 ? (
         cast.slice(0, 10).map((actor, index) => (
-          <div key={index} className="relative w-full max-w-[250px] cast-card">
+          <div key={index} className="relative w-full max-w-[250px] cast-card cursor-pointer">
             <Image
               className="object-top object-fill w-full h-62"
               src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
