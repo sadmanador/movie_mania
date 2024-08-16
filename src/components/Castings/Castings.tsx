@@ -16,7 +16,10 @@ const Castings: React.FC<CastingsProps> = ({ cast }) => {
       <h2 className="text-2xl text-yellow-500 font-bold ml-20 my-8">Cast</h2>
       <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
         {cast.length > 0 ? (
-          cast.slice(0, 10).map((actor, index) => (
+          cast.slice(0, 10)
+          .filter((actor) => actor.profile_path
+          )
+          .map((actor, index) => (
             <div
               key={index}
               className="relative w-full max-w-[250px] cast-card cursor-pointer"
