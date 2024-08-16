@@ -9,9 +9,6 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
   const imageUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : noImage;
-    
-
-  console.log("similar", movie);
 
   return (
     <Link

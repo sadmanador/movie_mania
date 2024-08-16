@@ -49,14 +49,17 @@ const SearchBox = () => {
         <div className="relative">
           <div className="absolute inset-y-0 right-0 flex items-center px-2.5">
             {response && (
-              <button className="border p-1 rounded-full" onClick={clearInput}>
+              <button
+                className="border p-1 rounded-full hover:bg-red-600"
+                onClick={clearInput}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
-                  className="h-5 w-5 text-gray-500"
+                  className="h-5 w-5 text-gray-800"
                 >
                   <path
                     strokeLinecap="round"

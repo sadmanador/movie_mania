@@ -11,8 +11,6 @@ const TVshowCard = ({ movie }: { movie: TVShow }) => {
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : noImage;
 
-  console.log(movie.poster_path);
-
   return (
     <Link
       href={`/tv_shows/${movie.id}`}
