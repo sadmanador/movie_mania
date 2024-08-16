@@ -50,7 +50,7 @@ const SearchBox = () => {
           <div className="absolute inset-y-0 right-0 flex items-center px-2.5">
             {response && (
               <button
-                className="border p-1 rounded-full hover:bg-red-600"
+                className="border p-1 rounded-full bg-red-400 hover:bg-red-500 active:bg-red-700"
                 onClick={clearInput}
               >
                 <svg
@@ -73,7 +73,7 @@ const SearchBox = () => {
           <input
             ref={inputRef}
             type="text"
-            className="text-black p-2 block w-full rounded-md border-gray-300 pr-10 shadow-sm focus:border-gray-500 focus:ring focus:ring-gray-500 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
+            className="py-1 px-4 text-black placeholder:text-gray-600 block w-full rounded-md border-gray-300 pr-10 shadow-sm disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 "
             placeholder="Search"
             onChange={handleInputChange}
           />
