@@ -1,5 +1,5 @@
 import { MasterDataContext } from "@/types/MasterContextType";
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState, useRef } from "react";
 
 const defaultContextValue: MasterDataContext = {
   movies: [],
@@ -22,8 +22,7 @@ const defaultContextValue: MasterDataContext = {
   setMovieId: () => {},
 };
 
-export const MasterContext =
-  createContext<MasterDataContext>(defaultContextValue);
+export const MasterContext = createContext<MasterDataContext>(defaultContextValue);
 
 interface BannerContextProps {
   children: ReactNode;
@@ -47,6 +46,8 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
   const [movieId, setMovieId] = useState<string>("");
 
+  const prevTrendingOptionsRef = useRef<string>(trendingOptions);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -57,11 +58,9 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
         if (!response.ok) {
           const errorText = await response.text();
           console.error("Response Error:", errorText);
-          throw new Error(
-            `Network response was not ok: ${response.statusText}`
-          );
+          throw new Error(`Network response was not ok: ${response.statusText}`);
         }
-
+  
         const data = await response.json();
         setMovies(data.results);
       } catch (error) {
@@ -71,8 +70,18 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
         setLoading(false);
       }
     };
+
+    // Check if trendingOptions has changed, if so, reset page to 1
+    if (prevTrendingOptionsRef.current !== trendingOptions) {
+      setPage(1);
+    }
+
+    // Update the previous trendingOptions ref
+    prevTrendingOptionsRef.current = trendingOptions;
+
     fetchData();
   }, [page, movieOrTv, trendingOptions]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
