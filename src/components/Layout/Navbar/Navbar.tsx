@@ -1,29 +1,16 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import ThemeToggleButton from "@/components/ThemeToggleButton/ThemeToggleButton";
 
 const Navbar = () => {
   const [currentPath, setCurrentPath] = useState<string>("");
-
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
-    const handleRouteChange = (url: string) => setCurrentPath(url);
-    
-    window.addEventListener("popstate", () =>
-      handleRouteChange(window.location.pathname)
-    );
-
-    return () => {
-      window.removeEventListener("popstate", () =>
-        handleRouteChange(window.location.pathname)
-      );
-    };
-  }, []);
+  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   const handleLinkClick = (url: string) => {
     setCurrentPath(url);
+    setDropdownOpen(false);
   };
 
   return (
@@ -36,7 +23,12 @@ const Navbar = () => {
       <div className="navbar sticky top-0 glass md:px-10 z-20">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -54,7 +46,9 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow ${
+                dropdownOpen ? 'block' : 'hidden'
+              }`}
             >
               <li>
                 <Link
@@ -89,7 +83,7 @@ const Navbar = () => {
                   TV Shows
                 </Link>
               </li>
-              <li>
+              <li onClick={() => handleLinkClick("/tv_shows")}>
                 <ThemeToggleButton />
               </li>
             </ul>
