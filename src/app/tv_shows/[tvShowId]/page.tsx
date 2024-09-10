@@ -1,39 +1,28 @@
 "use client";
-import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
-import VideoPlayer from "@/components/VideoPlayer/VideoPlayer";
-import { MasterContext } from "@/context/MasterContext";
-import { Rating, Typography } from "@mui/material";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
-import noImage from "@/assets/no_image.jpg";
-import noBanner from "@/assets/no_banner.png";
 import Castings from "@/components/Castings/Castings";
+import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import SceneGallery from "@/components/SceneGallery/SceneGallery";
 import SceneModal from "@/components/SceneModal/SceneModal";
+import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
 import Trailers from "@/components/Trailers/Trailers";
-import MediaDetails from "@/components/MediaDetails/MediaDetails";
+import { MasterContext } from "@/context/MasterContext";
+import { usePathname } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 
 const DetailedTvShowPage = () => {
-  const { detailsType } = useContext(MasterContext);
   const [movie, setMovie] = useState<any>(null);
   const [youtubeData, setYoutubeData] = useState<any>(null);
-  const pathname = usePathname();
   const [credits, setCredits] = useState<any>(null);
-  const segments = pathname?.split("/") || [];
-  const numericTvShowId = Number(segments[segments.length - 1]);
   const [sceneImages, setSceneImages] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const pathname = usePathname();
+  const segments = pathname?.split("/") || [];
+  const numericTvShowId = Number(segments[segments.length - 1]);
+  const { detailsType } = useContext(MasterContext);
 
-  const imageUrl =
-    movie && movie.poster_path
-      ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
-      : noImage;
+  const imageUrl = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`
+  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`
 
-  const backDropImg =
-    movie && movie.backdrop_path
-      ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-      : noBanner;
 
   const featuredCrew = credits?.crew.filter((member: any) =>
     ["Director", "Producer", "Screenplay", "Writer"].includes(member.job)

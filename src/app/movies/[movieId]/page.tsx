@@ -1,6 +1,4 @@
 "use client";
-import noBanner from "@/assets/no_banner.png";
-import noImage from "@/assets/no_image.jpg";
 import Castings from "@/components/Castings/Castings";
 import MediaDetails from "@/components/MediaDetails/MediaDetails";
 import SceneGallery from "@/components/SceneGallery/SceneGallery";
@@ -20,15 +18,9 @@ const DetailedMoviePage = () => {
   const lastPartOfPath = pathname?.split("/movies/")[1];
   const numericMovieId = Number(lastPartOfPath);
 
-  const imageUrl =
-    movie && movie.poster_path
-      ? `https://image.tmdb.org/t/p/w1280${movie.poster_path}`
-      : noImage;
+  const imageUrl = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`
+  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`
 
-  const backDropImg =
-    movie && movie.backdrop_path
-      ? `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`
-      : noBanner;
 
   useEffect(() => {
     const fetchMovieData = async () => {

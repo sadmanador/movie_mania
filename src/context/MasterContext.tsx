@@ -3,23 +3,23 @@ import React, { createContext, ReactNode, useEffect, useState, useRef } from "re
 
 const defaultContextValue: MasterDataContext = {
   movies: [],
+  page: 1,
   searchResult: [],
   sliderData: [],
   similarMovies: [],
   loading: true,
   error: null,
-  page: 1,
   detailsType: "movie",
   movieOrTv: "movie",
   singleMovie: {},
   movieId: "",
-  setPage: () => {},
   setQuery: () => {},
   setSingleMovie: () => {},
-  setMovieOrTv: () => {},
-  setTrendingOptions: () => {},
   setDetailsType: () => {},
   setMovieId: () => {},
+  setTrendingOptions: () => {},
+  setMovieOrTv: () => {},
+  setPage: () => {},
 };
 
 export const MasterContext = createContext<MasterDataContext>(defaultContextValue);
@@ -153,23 +153,23 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
 
   const contextValue: MasterDataContext = {
     movies,
+    page,
     sliderData,
     searchResult,
     similarMovies,
     loading,
     error,
-    setPage,
-    page,
-    setQuery,
+    detailsType,
     singleMovie,
-    setSingleMovie,
+    movieId,
+    movieOrTv,
+    setPage,
     setMovieOrTv,
     setTrendingOptions,
-    detailsType,
+    setQuery,
+    setSingleMovie,
     setDetailsType,
-    movieId,
     setMovieId,
-    movieOrTv,
   };
 
   return (
