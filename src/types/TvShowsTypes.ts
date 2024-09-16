@@ -9,7 +9,6 @@ export type TVShow = {
   popularity: number;
   poster_path: string;
 
-
   first_air_date: string;
   name: string;
   origin_country: string[];

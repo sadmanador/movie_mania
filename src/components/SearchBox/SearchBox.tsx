@@ -1,13 +1,13 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import SearchResultCard from "@/components/SearchResultCard/SearchResultCard";
+'use client';
+import SearchResultCard from '@/components/SearchResultCard/SearchResultCard';
+import { useEffect, useRef, useState } from 'react';
 
-const API_KEY = "c7cf1258a5aa723e8a98f08f639e86b6";
-const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const SearchBox = () => {
   const [results, setResults] = useState<any[]>([]);
-  const [response, setResponse] = useState<string>("");
+  const [response, setResponse] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,10 +15,10 @@ const SearchBox = () => {
   };
 
   const clearInput = () => {
-    setResponse("");
+    setResponse('');
     setResults([]);
     if (inputRef.current) {
-      inputRef.current.value = "";
+      inputRef.current.value = '';
     }
   };
 
@@ -31,12 +31,12 @@ const SearchBox = () => {
 
       try {
         const res = await fetch(
-          `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${response}`
+          `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${response}`,
         );
         const data = await res.json();
         setResults(data.results || []);
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
 
@@ -50,7 +50,7 @@ const SearchBox = () => {
           <div className="absolute inset-y-0 right-0 flex items-center px-2.5">
             {response && (
               <button
-                className="border p-1 rounded-full bg-red-400 hover:bg-red-500 active:bg-red-700"
+                className="border rounded-full bg-red-400 hover:bg-red-500 active:bg-red-700 p-1"
                 onClick={clearInput}
               >
                 <svg

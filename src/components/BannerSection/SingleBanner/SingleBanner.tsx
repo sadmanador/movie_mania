@@ -1,8 +1,8 @@
-import { Movie } from "@/types/MovieTypes";
-import { Rating, Typography } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { Rating, Typography } from '@mui/material';
+import { Movie } from '@/types/MovieTypes';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 // Adjust the path to your Movie type
 
 interface SingleBannerProps {
@@ -24,7 +24,7 @@ const SingleBanner: React.FC<SingleBannerProps> = ({
     <div
       id={`item${itemIndex}`}
       className={`carousel-item relative w-full ${
-        currentItem === itemIndex ? "block" : "hidden"
+        currentItem === itemIndex ? 'block' : 'hidden'
       }`}
     >
       <Image

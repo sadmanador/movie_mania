@@ -1,13 +1,16 @@
-"use client";
-import { Movie } from "@/types/MovieTypes";
-import Image from "next/image";
-import Link from "next/link";
+'use client';
+import { Movie } from '@/types/MovieTypes';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const SearchResultCard = ({ movie }: { movie: Movie }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   return (
-    <Link href={`/movies/${movie.id}`} className="my-3 flex gap-2 cursor-pointer hover:border transition:border duration-100">
+    <Link
+      href={`/movies/${movie.id}`}
+      className="my-3 flex gap-2 cursor-pointer hover:border transition:border duration-100"
+    >
       <div>
         <Image width={60} height={100} src={imageUrl} alt={movie.title} />
       </div>
@@ -19,7 +22,7 @@ const SearchResultCard = ({ movie }: { movie: Movie }) => {
         </p>
         <div className="justify-start">
           <div className="">
-            Release Date:{" "}
+            Release Date:{' '}
             <span className="text-[10px] italic ml-2">
               {movie.release_date}
             </span>

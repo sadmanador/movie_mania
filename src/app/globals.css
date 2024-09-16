@@ -5,3 +5,9 @@
 body {
   overflow-x: hidden;
 }
+
+@layer components {
+  .section-heading {
+    @apply mb-8 ml-20 text-2xl font-bold text-yellow-500;
+  }
+}

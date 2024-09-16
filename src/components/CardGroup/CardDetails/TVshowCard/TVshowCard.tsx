@@ -1,10 +1,10 @@
-"use client";
-import { TVShow } from "@/types/TvShowsTypes";
-import { Rating } from "@mui/material";
-import Link from "next/link";
-import "./TVshowCard.css";
-import Image from "next/image";
-import noImage from "@/assets/no_image.jpg";
+'use client';
+import { TVShow } from '@/types/TvShowsTypes';
+import noImage from '@/assets/no_image.jpg';
+import { Rating } from '@mui/material';
+import Image from 'next/image';
+import Link from 'next/link';
+import './TVshowCard.css';
 
 const TVshowCard = ({ movie }: { movie: TVShow }) => {
   const imageUrl = movie.poster_path

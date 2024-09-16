@@ -1,10 +1,8 @@
-import { MasterContext } from "@/context/MasterContext";
-import { useContext } from "react";
+import { MasterContext } from '@/context/MasterContext';
+import { useContext } from 'react';
 
 const Pagination = () => {
   const { setPage, page } = useContext(MasterContext);
-
-
 
   return (
     <div className="my-10">
@@ -12,7 +10,7 @@ const Pagination = () => {
         <nav aria-label="Pagination">
           <ul className="inline-flex items-center -space-x-px rounded-md text-sm shadow-sm">
             {page <= 1 ? (
-              ""
+              ''
             ) : (
               <li>
                 <a
@@ -40,11 +38,11 @@ const Pagination = () => {
             )}
 
             {page <= 1 ? (
-              ""
+              ''
             ) : (
               <>
                 {page <= 2 ? (
-                  ""
+                  ''
                 ) : (
                   <li>
                     <a

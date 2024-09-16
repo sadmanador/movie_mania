@@ -1,9 +1,7 @@
-// components/TvShowHeader/TvShowHeader.tsx
-
-import Image from "next/image";
-import { Rating, Typography } from "@mui/material";
-import noImage from "@/assets/no_image.jpg";
-import noBanner from "@/assets/no_banner.png";
+import { Rating, Typography } from '@mui/material';
+import noBanner from '@/assets/no_banner.png';
+import noImage from '@/assets/no_image.jpg';
+import Image from 'next/image';
 
 interface TvShowHeaderProps {
   movie: any;
@@ -75,12 +73,12 @@ const MediaDetails = ({
                 </div>
               </p>
               <p className="mt-4 text-stone-400">
-                Genres:{" "}
+                Genres:{' '}
                 <div className="">
                   <div className="badge badge-outline rounded-lg">
                     {genreNames}
                   </div>
-                </div>{" "}
+                </div>{' '}
               </p>
             </div>
             <div>

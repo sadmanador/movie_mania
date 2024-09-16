@@ -1,14 +1,14 @@
-import Footer from "@/components/Layout/Footer/Footer";
-import Navbar from "@/components/Layout/Navbar/Navbar";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import Footer from '@/components/Layout/Footer/Footer';
+import Navbar from '@/components/Layout/Navbar/Navbar';
+import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "Movie Mania",
-  description: "Movies to watch next",
+  title: 'Movie Mania',
+  description: 'Movies to watch next',
 };
 
 export default function RootLayout({

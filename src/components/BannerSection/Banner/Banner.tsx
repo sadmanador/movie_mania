@@ -1,7 +1,7 @@
-"use client";
-import { useContext, useEffect, useState } from "react";
-import { MasterContext } from "@/context/MasterContext";
-import SingleBanner from "@/components/BannerSection/SingleBanner/SingleBanner";
+'use client';
+import SingleBanner from '@/components/BannerSection/SingleBanner/SingleBanner';
+import { MasterContext } from '@/context/MasterContext';
+import { useContext, useEffect, useState } from 'react';
 
 const Banner = () => {
   const { movies } = useContext(MasterContext);
@@ -48,37 +48,37 @@ const Banner = () => {
       <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex justify-center gap-2 py-2  w-full">
         <button
           onClick={() => setCurrentItem(1)}
-          className={`btn btn-xs ${currentItem === 1 ? "btn-active" : ""}`}
+          className={`btn btn-xs ${currentItem === 1 ? 'btn-active' : ''}`}
         >
           1
         </button>
         <button
           onClick={() => setCurrentItem(2)}
-          className={`btn btn-xs ${currentItem === 2 ? "btn-active" : ""}`}
+          className={`btn btn-xs ${currentItem === 2 ? 'btn-active' : ''}`}
         >
           2
         </button>
         <button
           onClick={() => setCurrentItem(3)}
-          className={`btn btn-xs ${currentItem === 3 ? "btn-active" : ""}`}
+          className={`btn btn-xs ${currentItem === 3 ? 'btn-active' : ''}`}
         >
           3
         </button>
         <button
           onClick={() => setCurrentItem(4)}
-          className={`btn btn-xs ${currentItem === 4 ? "btn-active" : ""}`}
+          className={`btn btn-xs ${currentItem === 4 ? 'btn-active' : ''}`}
         >
           4
         </button>
         <button
           onClick={() => setCurrentItem(5)}
-          className={`btn btn-xs ${currentItem === 5 ? "btn-active" : ""}`}
+          className={`btn btn-xs ${currentItem === 5 ? 'btn-active' : ''}`}
         >
           5
         </button>
         <button
           onClick={() => setCurrentItem(6)}
-          className={`btn btn-xs ${currentItem === 6 ? "btn-active" : ""}`}
+          className={`btn btn-xs ${currentItem === 6 ? 'btn-active' : ''}`}
         >
           6
         </button>

@@ -1,11 +1,11 @@
-"use client";
-import Link from "next/link";
-import { useState } from "react";
-import SearchBox from "@/components/SearchBox/SearchBox";
-import ThemeToggleButton from "@/components/ThemeToggleButton/ThemeToggleButton";
+'use client';
+import ThemeToggleButton from '@/components/ThemeToggleButton/ThemeToggleButton';
+import SearchBox from '@/components/SearchBox/SearchBox';
+import { useState } from 'react';
+import Link from 'next/link';
 
 const Navbar = () => {
-  const [currentPath, setCurrentPath] = useState<string>("");
+  const [currentPath, setCurrentPath] = useState<string>('');
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
   const handleLinkClick = (url: string) => {
@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <>
       <div className="sm:hidden navbar bg-base-300">
-        <Link href={"/"} className="btn btn-ghost text-xl">
+        <Link href={'/'} className="btn btn-ghost text-xl">
           Movie Mania
         </Link>
       </div>
@@ -53,10 +53,10 @@ const Navbar = () => {
               <li>
                 <Link
                   className={`${
-                    currentPath === "/" ? "text-yellow-500" : ""
+                    currentPath === '/' ? 'text-yellow-500' : ''
                   } hover:text-yellow-500 text-sm`}
-                  href={"/"}
-                  onClick={() => handleLinkClick("/")}
+                  href={'/'}
+                  onClick={() => handleLinkClick('/')}
                 >
                   Home
                 </Link>
@@ -64,10 +64,10 @@ const Navbar = () => {
               <li>
                 <Link
                   className={`${
-                    currentPath === "/movies" ? "text-yellow-500" : ""
+                    currentPath === '/movies' ? 'text-yellow-500' : ''
                   } hover:text-yellow-500 text-sm`}
-                  href={"/movies"}
-                  onClick={() => handleLinkClick("/movies")}
+                  href={'/movies'}
+                  onClick={() => handleLinkClick('/movies')}
                 >
                   Explore
                 </Link>
@@ -75,20 +75,20 @@ const Navbar = () => {
               <li>
                 <Link
                   className={`${
-                    currentPath === "/tv_shows" ? "text-yellow-500" : ""
+                    currentPath === '/tv_shows' ? 'text-yellow-500' : ''
                   } hover:text-yellow-500 text-sm`}
-                  href={"/tv_shows"}
-                  onClick={() => handleLinkClick("/tv_shows")}
+                  href={'/tv_shows'}
+                  onClick={() => handleLinkClick('/tv_shows')}
                 >
                   TV Shows
                 </Link>
               </li>
-              <li onClick={() => handleLinkClick("/tv_shows")}>
+              <li onClick={() => handleLinkClick('/tv_shows')}>
                 <ThemeToggleButton />
               </li>
             </ul>
           </div>
-          <Link href={"/"} className="lg:text-xl hidden sm:block font-bold">
+          <Link href={'/'} className="lg:text-xl hidden sm:block font-bold">
             Movie Mania
           </Link>
         </div>
@@ -97,10 +97,10 @@ const Navbar = () => {
             <li>
               <Link
                 className={`${
-                  currentPath === "/" ? "text-yellow-500" : ""
+                  currentPath === '/' ? 'text-yellow-500' : ''
                 } hover:text-yellow-500 text-sm`}
-                href={"/"}
-                onClick={() => handleLinkClick("/")}
+                href={'/'}
+                onClick={() => handleLinkClick('/')}
               >
                 Home
               </Link>
@@ -108,10 +108,10 @@ const Navbar = () => {
             <li>
               <Link
                 className={`${
-                  currentPath === "/movies" ? "text-yellow-500" : ""
+                  currentPath === '/movies' ? 'text-yellow-500' : ''
                 } hover:text-yellow-500 text-sm`}
-                href={"/movies"}
-                onClick={() => handleLinkClick("/movies")}
+                href={'/movies'}
+                onClick={() => handleLinkClick('/movies')}
               >
                 Explore
               </Link>
@@ -119,10 +119,10 @@ const Navbar = () => {
             <li>
               <Link
                 className={`${
-                  currentPath === "/tv_shows" ? "text-yellow-500" : ""
+                  currentPath === '/tv_shows' ? 'text-yellow-500' : ''
                 } hover:text-yellow-500 text-sm`}
-                href={"/tv_shows"}
-                onClick={() => handleLinkClick("/tv_shows")}
+                href={'/tv_shows'}
+                onClick={() => handleLinkClick('/tv_shows')}
               >
                 TV Shows
               </Link>

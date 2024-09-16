@@ -1,9 +1,9 @@
-import { Movie } from "@/types/MovieTypes";
-import { Rating } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import "@/components/SingleSlide/SingleSlide.css";
+import '@/components/SingleSlide/SingleSlide.css';
+import { Movie } from '@/types/MovieTypes';
+import { Rating } from '@mui/material';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 const SingleSlide = ({ movie }: { movie: Movie }) => {
   const imageUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
@@ -32,7 +32,7 @@ const SingleSlide = ({ movie }: { movie: Movie }) => {
             />
           </div>
         </div>
-        <h3 className="absolute p-4 bottom-0 mx-auto text-xl font-medium text-white single-slider-overlay-bottom">
+        <h3 className="absolute p-4  mx-auto text-xl font-medium text-white single-slider-overlay-bottom bottom-0">
           {movie.title}
         </h3>
       </div>

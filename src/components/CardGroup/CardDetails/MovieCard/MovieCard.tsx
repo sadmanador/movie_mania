@@ -1,9 +1,9 @@
-"use client";
-import { Movie } from "@/types/MovieTypes";
-import { Rating, Typography } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import noImage from "@/assets/no_image.jpg";
+'use client';
+import { Rating, Typography } from '@mui/material';
+import noImage from '@/assets/no_image.jpg';
+import { Movie } from '@/types/MovieTypes';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const MovieCard = ({ movie }: { movie: Movie }) => {
   const imageUrl = movie.poster_path
@@ -19,9 +19,9 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <Image width={300} height={300} src={imageUrl} alt={movie.title} />
       </figure>
       <div className="card-body py-2 tooltip" data-tip={movie.title}>
-        <h2 className="card-title hover:text-yellow-500 text-lg" >
+        <h2 className="card-title hover:text-yellow-500 text-lg">
           {movie.title.length >= 20
-            ? movie.title.slice(0, 16) + "..."
+            ? movie.title.slice(0, 16) + '...'
             : movie.title}
         </h2>
 

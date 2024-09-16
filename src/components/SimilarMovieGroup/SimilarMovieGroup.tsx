@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import MovieCard from "@/components/CardGroup/CardDetails/MovieCard/MovieCard";
-import TVshowCard from "@/components/CardGroup/CardDetails/TVshowCard/TVshowCard";
+import TVshowCard from '@/components/CardGroup/CardDetails/TVshowCard/TVshowCard';
+import MovieCard from '@/components/CardGroup/CardDetails/MovieCard/MovieCard';
+import React, { useEffect, useState } from 'react';
 
 interface SimilarMovieGroupProps {
   movieId: string;
-  mediaType: "movie" | "tv";
+  mediaType: 'movie' | 'tv';
 }
 
 const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
@@ -21,16 +21,16 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
         setLoading(true);
         try {
           const response = await fetch(
-            `https://api.themoviedb.org/3/${mediaType}/${movieId}/similar?api_key=c7cf1258a5aa723e8a98f08f639e86b6`
+            `https://api.themoviedb.org/3/${mediaType}/${movieId}/similar?api_key=c7cf1258a5aa723e8a98f08f639e86b6`,
           );
           if (!response.ok) {
-            throw new Error("Network response was not ok");
+            throw new Error('Network response was not ok');
           }
           const data = await response.json();
           setSimilarMovies(data.results);
         } catch (error) {
           setError(error as Error);
-          console.error("Fetch error:", error);
+          console.error('Fetch error:', error);
         } finally {
           setLoading(false);
         }
@@ -45,18 +45,18 @@ const SimilarMovieGroup: React.FC<SimilarMovieGroupProps> = ({
 
   return (
     <>
-      <h2 className="text-2xl text-yellow-500 font-bold ml-16 mb-8">
-        Similar {mediaType == "movie" ? "Movie" : "TV Shows"}
+      <h2 className="section-heading">
+        Similar {mediaType == 'movie' ? 'Movie' : 'TV Shows'}
       </h2>
       <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 lg:mx-14 mx-4">
         {similarMovies
           .filter((movie) => movie.poster_path)
           .map((movie, index) =>
-            mediaType == "movie" ? (
+            mediaType == 'movie' ? (
               <MovieCard key={index} movie={movie} />
             ) : (
               <TVshowCard key={index} movie={movie} />
-            )
+            ),
           )}
       </div>
     </>

@@ -1,4 +1,4 @@
-import { VideoData } from "@/types/YoutubeType";
+import { VideoData } from '@/types/YoutubeType';
 
 interface VideoPlayerProps {
   video: VideoData;

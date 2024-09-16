@@ -1,13 +1,13 @@
-"use client";
-import Castings from "@/components/Castings/Castings";
-import MediaDetails from "@/components/MediaDetails/MediaDetails";
-import SceneGallery from "@/components/SceneGallery/SceneGallery";
-import SceneModal from "@/components/SceneModal/SceneModal";
-import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
-import Trailers from "@/components/Trailers/Trailers";
-import { MasterContext } from "@/context/MasterContext";
-import { usePathname } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+'use client';
+import SimilarMovieGroup from '@/components/SimilarMovieGroup/SimilarMovieGroup';
+import MediaDetails from '@/components/MediaDetails/MediaDetails';
+import SceneGallery from '@/components/SceneGallery/SceneGallery';
+import SceneModal from '@/components/SceneModal/SceneModal';
+import { MasterContext } from '@/context/MasterContext';
+import { useContext, useEffect, useState } from 'react';
+import Castings from '@/components/Castings/Castings';
+import Trailers from '@/components/Trailers/Trailers';
+import { usePathname } from 'next/navigation';
 
 const DetailedTvShowPage = () => {
   const [movie, setMovie] = useState<any>(null);
@@ -16,16 +16,15 @@ const DetailedTvShowPage = () => {
   const [sceneImages, setSceneImages] = useState<any>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const pathname = usePathname();
-  const segments = pathname?.split("/") || [];
+  const segments = pathname?.split('/') || [];
   const numericTvShowId = Number(segments[segments.length - 1]);
   const { detailsType } = useContext(MasterContext);
 
-  const imageUrl = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`
-  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`
-
+  const imageUrl = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`;
+  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`;
 
   const featuredCrew = credits?.crew.filter((member: any) =>
-    ["Director", "Producer", "Screenplay", "Writer"].includes(member.job)
+    ['Director', 'Producer', 'Screenplay', 'Writer'].includes(member.job),
   );
 
   //single details
@@ -33,15 +32,15 @@ const DetailedTvShowPage = () => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/tv/${numericTvShowId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/tv/${numericTvShowId}?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setMovie(data);
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieData();
@@ -52,15 +51,15 @@ const DetailedTvShowPage = () => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/tv/${numericTvShowId}/videos?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/tv/${numericTvShowId}/videos?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setYoutubeData(data.results.slice(0, 6));
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieData();
@@ -71,15 +70,15 @@ const DetailedTvShowPage = () => {
     const fetchMovieCredits = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/tv/${numericTvShowId}/credits?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/tv/${numericTvShowId}/credits?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setCredits(data);
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieCredits();
@@ -89,15 +88,15 @@ const DetailedTvShowPage = () => {
     const fetchMovieImages = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/tv/${numericTvShowId}/images?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/tv/${numericTvShowId}/images?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setSceneImages(data.backdrops.slice(0, 6));
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieImages();
@@ -105,11 +104,11 @@ const DetailedTvShowPage = () => {
 
   const genreNames = movie?.genres
     .map((genre: { name: string }) => genre.name)
-    .join(", ");
+    .join(', ');
 
   const handleOpenModal = (image: string) => {
     setSelectedImage(image);
-    const dialog = document.getElementById("scene_modal") as HTMLDialogElement;
+    const dialog = document.getElementById('scene_modal') as HTMLDialogElement;
     if (dialog) {
       dialog.showModal();
     }
@@ -117,7 +116,7 @@ const DetailedTvShowPage = () => {
 
   const handleCloseModal = () => {
     setSelectedImage(null);
-    const dialog = document.getElementById("scene_modal") as HTMLDialogElement;
+    const dialog = document.getElementById('scene_modal') as HTMLDialogElement;
     if (dialog) {
       dialog.close();
     }
@@ -136,7 +135,7 @@ const DetailedTvShowPage = () => {
           <Trailers youtubeData={youtubeData} />
           <Castings cast={credits?.cast || []} />
           <SceneGallery
-            mediaType={"movie"}
+            mediaType={'movie'}
             sceneImages={sceneImages}
             handleImageClick={handleOpenModal}
           />
@@ -145,7 +144,7 @@ const DetailedTvShowPage = () => {
             onClose={handleCloseModal}
           />
           <SimilarMovieGroup
-            mediaType={"tv"}
+            mediaType={'tv'}
             movieId={numericTvShowId.toString()}
           />
         </>

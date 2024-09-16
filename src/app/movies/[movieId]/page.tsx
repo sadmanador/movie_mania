@@ -1,12 +1,12 @@
-"use client";
-import Castings from "@/components/Castings/Castings";
-import MediaDetails from "@/components/MediaDetails/MediaDetails";
-import SceneGallery from "@/components/SceneGallery/SceneGallery";
-import SceneModal from "@/components/SceneModal/SceneModal";
-import SimilarMovieGroup from "@/components/SimilarMovieGroup/SimilarMovieGroup";
-import Trailers from "@/components/Trailers/Trailers";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+'use client';
+import SimilarMovieGroup from '@/components/SimilarMovieGroup/SimilarMovieGroup';
+import MediaDetails from '@/components/MediaDetails/MediaDetails';
+import SceneGallery from '@/components/SceneGallery/SceneGallery';
+import SceneModal from '@/components/SceneModal/SceneModal';
+import Castings from '@/components/Castings/Castings';
+import Trailers from '@/components/Trailers/Trailers';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const DetailedMoviePage = () => {
   const [movie, setMovie] = useState<any>(null);
@@ -15,26 +15,25 @@ const DetailedMoviePage = () => {
   const [sceneImages, setSceneImages] = useState<any>(null); // For movie scene images
   const [selectedImage, setSelectedImage] = useState<string | null>(null); // For the selected scene image
   const pathname = usePathname();
-  const lastPartOfPath = pathname?.split("/movies/")[1];
+  const lastPartOfPath = pathname?.split('/movies/')[1];
   const numericMovieId = Number(lastPartOfPath);
 
-  const imageUrl = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`
-  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`
-
+  const imageUrl = `https://image.tmdb.org/t/p/w1280${movie?.poster_path}`;
+  const backDropImg = `https://image.tmdb.org/t/p/w1280${movie?.backdrop_path}`;
 
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/movie/${numericMovieId}?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setMovie(data);
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieData();
@@ -44,15 +43,15 @@ const DetailedMoviePage = () => {
     const fetchYoutubeData = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}/videos?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/movie/${numericMovieId}/videos?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setYoutubeData(data.results.slice(0, 6));
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchYoutubeData();
@@ -62,15 +61,15 @@ const DetailedMoviePage = () => {
     const fetchMovieCredits = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}/credits?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/movie/${numericMovieId}/credits?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setCredits(data);
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieCredits();
@@ -80,15 +79,15 @@ const DetailedMoviePage = () => {
     const fetchMovieImages = async () => {
       try {
         const res = await fetch(
-          `${"https://api.themoviedb.org/3"}/movie/${numericMovieId}/images?api_key=${"c7cf1258a5aa723e8a98f08f639e86b6"}`
+          `${'https://api.themoviedb.org/3'}/movie/${numericMovieId}/images?api_key=${'c7cf1258a5aa723e8a98f08f639e86b6'}`,
         );
         if (!res.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await res.json();
         setSceneImages(data.backdrops.slice(0, 6));
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       }
     };
     fetchMovieImages();
@@ -96,16 +95,16 @@ const DetailedMoviePage = () => {
 
   const genreNames = movie?.genres
     .map((genre: { name: string }) => genre.name)
-    .join(", ");
+    .join(', ');
 
   // Filter out crew members who are not involved in Acting
   const featuredCrew = credits?.crew.filter((member: any) =>
-    ["Director", "Producer", "Screenplay", "Writer"].includes(member.job)
+    ['Director', 'Producer', 'Screenplay', 'Writer'].includes(member.job),
   );
 
   const handleOpenModal = (image: string) => {
     setSelectedImage(image);
-    const dialog = document.getElementById("scene_modal") as HTMLDialogElement;
+    const dialog = document.getElementById('scene_modal') as HTMLDialogElement;
     if (dialog) {
       dialog.showModal();
     }
@@ -113,7 +112,7 @@ const DetailedMoviePage = () => {
 
   const handleCloseModal = () => {
     setSelectedImage(null);
-    const dialog = document.getElementById("scene_modal") as HTMLDialogElement;
+    const dialog = document.getElementById('scene_modal') as HTMLDialogElement;
     if (dialog) {
       dialog.close();
     }
@@ -132,7 +131,7 @@ const DetailedMoviePage = () => {
           <Trailers youtubeData={youtubeData} />
           <Castings cast={credits?.cast || []} />
           <SceneGallery
-            mediaType={"movie"}
+            mediaType={'movie'}
             sceneImages={sceneImages}
             handleImageClick={handleOpenModal}
           />
@@ -141,7 +140,7 @@ const DetailedMoviePage = () => {
             onClose={handleCloseModal}
           />
           <SimilarMovieGroup
-            mediaType={"movie"}
+            mediaType={'movie'}
             movieId={numericMovieId.toString()}
           />
         </>

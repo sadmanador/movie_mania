@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 interface Scene {
   file_path: string;
@@ -7,7 +7,7 @@ interface Scene {
 interface SceneGalleryProps {
   sceneImages: Scene[];
   handleImageClick: (filePath: string) => void;
-  mediaType: "movie" | "tv";
+  mediaType: 'movie' | 'tv';
 }
 
 const SceneGallery: React.FC<SceneGalleryProps> = ({
@@ -17,8 +17,8 @@ const SceneGallery: React.FC<SceneGalleryProps> = ({
 }) => {
   return (
     <div>
-      <h2 className="text-2xl text-yellow-500 font-bold ml-20 my-8">
-        {mediaType == "movie" ? "Movie Scenes" : "TV Show Scenes"}
+      <h2 className="section-heading">
+        {mediaType == 'movie' ? 'Movie Scenes' : 'TV Show Scenes'}
       </h2>
       <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
         {sceneImages && sceneImages.length > 0 ? (

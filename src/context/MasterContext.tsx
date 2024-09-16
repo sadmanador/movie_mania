@@ -1,5 +1,11 @@
-import { MasterDataContext } from "@/types/MasterContextType";
-import React, { createContext, ReactNode, useEffect, useState, useRef } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useEffect,
+  useState,
+  useRef,
+} from 'react';
+import { MasterDataContext } from '@/types/MasterContextType';
 
 const defaultContextValue: MasterDataContext = {
   movies: [],
@@ -9,10 +15,10 @@ const defaultContextValue: MasterDataContext = {
   similarMovies: [],
   loading: true,
   error: null,
-  detailsType: "movie",
-  movieOrTv: "movie",
+  detailsType: 'movie',
+  movieOrTv: 'movie',
   singleMovie: {},
-  movieId: "",
+  movieId: '',
   setQuery: () => {},
   setSingleMovie: () => {},
   setDetailsType: () => {},
@@ -22,14 +28,15 @@ const defaultContextValue: MasterDataContext = {
   setPage: () => {},
 };
 
-export const MasterContext = createContext<MasterDataContext>(defaultContextValue);
+export const MasterContext =
+  createContext<MasterDataContext>(defaultContextValue);
 
 interface BannerContextProps {
   children: ReactNode;
 }
 
-const API_KEY = "c7cf1258a5aa723e8a98f08f639e86b6";
-const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [singleMovie, setSingleMovie] = useState<{}>({});
@@ -40,11 +47,11 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
-  const [query, setQuery] = useState<string>("");
-  const [movieOrTv, setMovieOrTv] = useState<string>("movie");
-  const [trendingOptions, setTrendingOptions] = useState<string>("top_rated");
-  const [detailsType, setDetailsType] = useState<"movie" | "tv">("movie");
-  const [movieId, setMovieId] = useState<string>("");
+  const [query, setQuery] = useState<string>('');
+  const [movieOrTv, setMovieOrTv] = useState<string>('movie');
+  const [trendingOptions, setTrendingOptions] = useState<string>('top_rated');
+  const [detailsType, setDetailsType] = useState<'movie' | 'tv'>('movie');
+  const [movieId, setMovieId] = useState<string>('');
 
   const prevTrendingOptionsRef = useRef<string>(trendingOptions);
 
@@ -53,19 +60,21 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `${BASE_URL}/${movieOrTv}/${trendingOptions}?api_key=${API_KEY}&page=${page}`
+          `${BASE_URL}/${movieOrTv}/${trendingOptions}?api_key=${API_KEY}&page=${page}`,
         );
         if (!response.ok) {
           const errorText = await response.text();
-          console.error("Response Error:", errorText);
-          throw new Error(`Network response was not ok: ${response.statusText}`);
+          console.error('Response Error:', errorText);
+          throw new Error(
+            `Network response was not ok: ${response.statusText}`,
+          );
         }
-  
+
         const data = await response.json();
         setMovies(data.results);
       } catch (error) {
         setError(error as Error);
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       } finally {
         setLoading(false);
       }
@@ -81,22 +90,21 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
 
     fetchData();
   }, [page, movieOrTv, trendingOptions]);
-  
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`
+          `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`,
         );
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setSliderData(data.results);
       } catch (error) {
         setError(error as Error);
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       } finally {
         setLoading(false);
       }
@@ -109,16 +117,16 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+          `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`,
         );
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error('Network response was not ok');
         }
         const data = await response.json();
         setSearchResult(data.results);
       } catch (error) {
         setError(error as Error);
-        console.error("Fetch error:", error);
+        console.error('Fetch error:', error);
       } finally {
         setLoading(false);
       }
@@ -132,16 +140,16 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
       if (movieId) {
         try {
           const response = await fetch(
-            `${BASE_URL}/movie/${movieId}/similar?api_key=${API_KEY}`
+            `${BASE_URL}/movie/${movieId}/similar?api_key=${API_KEY}`,
           );
           if (!response.ok) {
-            throw new Error("Network response was not ok");
+            throw new Error('Network response was not ok');
           }
           const data = await response.json();
           setSimilarMovies(data.results);
         } catch (error) {
           setError(error as Error);
-          console.error("Fetch error:", error);
+          console.error('Fetch error:', error);
         } finally {
           setLoading(false);
         }
