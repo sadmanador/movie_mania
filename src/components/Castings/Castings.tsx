@@ -1,13 +1,9 @@
 import Image from 'next/image';
 import './Castings.css';
-interface Actor {
-  profile_path: string;
-  name: string;
-  character: string;
-}
+import { CastMember } from '@/types/Credits';
 
 interface CastingsProps {
-  cast: Actor[];
+  cast: CastMember[];
 }
 
 const Castings: React.FC<CastingsProps> = ({ cast }) => {

@@ -5,14 +5,18 @@ import SceneGallery from '@/components/SceneGallery/SceneGallery';
 import SceneModal from '@/components/SceneModal/SceneModal';
 import Castings from '@/components/Castings/Castings';
 import Trailers from '@/components/Trailers/Trailers';
+import { VideoDetails } from '@/types/YoutubeType';
+import { SingleMovie } from '@/types/SingleMovie';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { Credits } from '@/types/Credits';
+import { ImageDetails } from '@/types/SceneType';
 
 const DetailedMoviePage = () => {
-  const [movie, setMovie] = useState<any>(null);
-  const [youtubeData, setYoutubeData] = useState<any>(null);
-  const [credits, setCredits] = useState<any>(null); // For movie credits
-  const [sceneImages, setSceneImages] = useState<any>(null); // For movie scene images
+  const [movie, setMovie] = useState<SingleMovie | null>(null);
+  const [youtubeData, setYoutubeData] = useState<VideoDetails[] | null>(null);
+  const [credits, setCredits] = useState<Credits | null>(null); // For movie credits
+  const [sceneImages, setSceneImages] = useState<ImageDetails[]>([]); // For movie scene images
   const [selectedImage, setSelectedImage] = useState<string | null>(null); // For the selected scene image
   const pathname = usePathname();
   const lastPartOfPath = pathname?.split('/movies/')[1];
@@ -93,9 +97,9 @@ const DetailedMoviePage = () => {
     fetchMovieImages();
   }, [numericMovieId]);
 
-  const genreNames = movie?.genres
-    .map((genre: { name: string }) => genre.name)
-    .join(', ');
+  const genreNames: string = movie?.genres
+    ? movie?.genres.map((genre: { name: string }) => genre.name).join(', ')
+    : '';
 
   // Filter out crew members who are not involved in Acting
   const featuredCrew = credits?.crew.filter((member: any) =>
@@ -125,7 +129,7 @@ const DetailedMoviePage = () => {
           <MediaDetails
             movie={movie}
             genreNames={genreNames}
-            featuredCrew={credits?.crew}
+            featuredCrew={credits?.crew ?? []}
             handleOpenModal={handleOpenModal}
           />
           <Trailers youtubeData={youtubeData} />

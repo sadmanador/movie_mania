@@ -8,13 +8,19 @@ import { useContext, useEffect, useState } from 'react';
 import Castings from '@/components/Castings/Castings';
 import Trailers from '@/components/Trailers/Trailers';
 import { usePathname } from 'next/navigation';
+import { SingleMovie } from '@/types/SingleMovie';
+import { VideoDetails } from '@/types/YoutubeType';
+import { Credits } from '@/types/Credits';
+import { ImageDetails } from '@/types/SceneType';
 
 const DetailedTvShowPage = () => {
-  const [movie, setMovie] = useState<any>(null);
-  const [youtubeData, setYoutubeData] = useState<any>(null);
-  const [credits, setCredits] = useState<any>(null);
-  const [sceneImages, setSceneImages] = useState<any>(null);
+  const [movie, setMovie] = useState<SingleMovie | null>(null);
+  const [youtubeData, setYoutubeData] = useState<VideoDetails[] | null>(null);
+  const [credits, setCredits] = useState<Credits | null>(null); // For movie credits
+  const [sceneImages, setSceneImages] = useState<ImageDetails[]>([]); // For movie scene images
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+
   const pathname = usePathname();
   const segments = pathname?.split('/') || [];
   const numericTvShowId = Number(segments[segments.length - 1]);
@@ -102,9 +108,9 @@ const DetailedTvShowPage = () => {
     fetchMovieImages();
   }, [numericTvShowId]);
 
-  const genreNames = movie?.genres
-    .map((genre: { name: string }) => genre.name)
-    .join(', ');
+  const genreNames: string = movie?.genres
+  ? movie?.genres.map((genre: { name: string }) => genre.name).join(', ')
+  : '';
 
   const handleOpenModal = (image: string) => {
     setSelectedImage(image);
@@ -129,7 +135,7 @@ const DetailedTvShowPage = () => {
           <MediaDetails
             movie={movie}
             genreNames={genreNames}
-            featuredCrew={credits?.crew}
+            featuredCrew={credits?.crew ?? []}
             handleOpenModal={handleOpenModal}
           />
           <Trailers youtubeData={youtubeData} />

@@ -1,12 +1,13 @@
 'use client';
 import SearchResultCard from '@/components/SearchResultCard/SearchResultCard';
+import { Movie } from '@/types/MovieTypes';
 import { useEffect, useRef, useState } from 'react';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const SearchBox = () => {
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<Movie[]>([]);
   const [response, setResponse] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 

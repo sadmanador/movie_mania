@@ -1,4 +1,4 @@
-export type Movie = {
+export type SingleMovie = {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection?: {

@@ -44,7 +44,7 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [searchResult, setSearchResult] = useState<any[]>([]);
   const [sliderData, setSliderData] = useState<any[]>([]);
   const [similarMovies, setSimilarMovies] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>('');
@@ -52,7 +52,6 @@ const MainContext: React.FC<BannerContextProps> = ({ children }) => {
   const [trendingOptions, setTrendingOptions] = useState<string>('top_rated');
   const [detailsType, setDetailsType] = useState<'movie' | 'tv'>('movie');
   const [movieId, setMovieId] = useState<string>('');
-
   const prevTrendingOptionsRef = useRef<string>(trendingOptions);
 
   useEffect(() => {

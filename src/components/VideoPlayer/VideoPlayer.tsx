@@ -1,7 +1,8 @@
-import { VideoData } from '@/types/YoutubeType';
+import { VideoDetails } from "@/types/YoutubeType";
+
 
 interface VideoPlayerProps {
-  video: VideoData;
+  video: VideoDetails;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ video }) => {

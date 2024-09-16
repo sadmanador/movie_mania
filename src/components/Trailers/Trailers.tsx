@@ -1,9 +1,9 @@
-import VideoPlayer from '../VideoPlayer/VideoPlayer';
-import { VideoData } from '@/types/YoutubeType';
+import { VideoDetails } from '@/types/YoutubeType';
 import React from 'react';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 
 interface TrailersProps {
-  youtubeData: VideoData[] | null;
+  youtubeData: VideoDetails[] | null;
 }
 
 const Trailers: React.FC<TrailersProps> = ({ youtubeData }) => {
@@ -12,7 +12,7 @@ const Trailers: React.FC<TrailersProps> = ({ youtubeData }) => {
       <h2 className="section-heading">Trailers</h2>
       <div className="flex flex-wrap gap-4 lg:mx-14 m-8 justify-center">
         {youtubeData && youtubeData.length > 0 ? (
-          youtubeData.map((video: VideoData, index: number) => (
+          youtubeData.map((video: VideoDetails, index: number) => (
             <VideoPlayer key={index} video={video} />
           ))
         ) : (
